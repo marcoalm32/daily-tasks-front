@@ -1,0 +1,43 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5em 5em;
+    align-items: center;
+    background-color: var(--blue-dark);
+    
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+
+        .title {
+            margin-left: 10px;
+            font-weight: 500;
+            color: var(--background-white);
+        }
+    }
+
+    .navbar-links {
+        .new-task {
+            border-radius: 20px;
+            background-color: var(--background-light);
+
+            button {
+                background-color: var(--background-light);
+                color: var(--blue-dark);
+                border-radius: 20px;
+                padding: 1.5em 3em;
+
+                mat-icon {
+                    font-size: 32px;
+                    width: 32px;
+                    height: 32px;
+                    color: var(--blue-dark);
+                }
+
+                .text {
+                    color: var(--text-color);
+                }
+            }
+        }
+    }
+}

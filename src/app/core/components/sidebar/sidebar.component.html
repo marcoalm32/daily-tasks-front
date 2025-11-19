@@ -1,0 +1,16 @@
+<aside class="sidebar">
+    <nav>
+        <ul>
+            <li 
+                *ngFor="let route of routes">
+                <a 
+                class="font-body route" 
+                [routerLink]="route.path" 
+                routerLinkActive="active">
+                    <mat-icon>{{route.icon}}</mat-icon>
+                    <span>{{route.label}}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
