@@ -1,0 +1,14 @@
+.login {
+    width: 400px;
+    min-height: 350px;
+    margin: 100px auto;
+    padding: 5em;
+    border: 1px solid var(--blue-base);
+    border-radius: 8px;
+    background-color: var(--background-light);
+}
+
+a {
+    color: var(--blue-base);
+    text-decoration: none;
+}

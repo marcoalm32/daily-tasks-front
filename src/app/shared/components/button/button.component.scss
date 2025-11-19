@@ -1,0 +1,32 @@
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+
+}
+
+.btn.success { background-color: var(--blue-base); }
+.btn.info  { background-color: var(--status-info); }
+.btn.warning { background-color: var(--status-warning); }
+.btn.danger  { background-color: var(--status-danger); }
+
+.extra-large {
+    padding: 20px 32px;
+    font-size: 20px;
+}
+
+.large {
+    padding: 12px 24px;
+    font-size: 18px;
+}
+
+.medium {
+    padding: 8px 16px;
+    font-size: 16px;
+}
+
+.small {
+    padding: 4px 8px;
+    font-size: 14px;
+}

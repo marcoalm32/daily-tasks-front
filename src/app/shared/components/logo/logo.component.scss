@@ -1,0 +1,18 @@
+.logo {
+
+    .icon {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+        color: var(--blue-dark);
+        border: 2px solid var(--blue-dark);
+        border-radius: 50%;
+        padding: 8px;
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--blue-dark);
+    }
+}
