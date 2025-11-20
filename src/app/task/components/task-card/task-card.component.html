@@ -1,10 +1,20 @@
-<div class="card">
-    <h3 class="font-subtitle">
+<div class="card" [ngClass]="{ 'alert-card': task?.isExpired }">
+    <h3 class="font-title title-card mb-10 d-flex justify-space-between align-center">
         {{ task?.title }}
+        <mat-icon 
+            *ngIf="task?.isExpired" 
+            color="warn" 
+            matTooltip="Tarefa expirada"
+            matToltipPosition="above">warning</mat-icon>
     </h3>
     <p class="font-body mb-20">{{ task?.description }}</p>
-    <div class="mt-25 d-flex justify-space-evenly">
+    <div class="mt-25 d-flex justify-start align-center information">
         <mat-icon>calendar_month</mat-icon>
-        {{ task?.dueDate | date:'dd/MM/yyyy' }}
+        <span class="font-body ml-10">Data: {{ task?.dueDate | date:'dd/MM/yyyy' }}</span>
+    </div>
+    <div class="mt-15">
+        <app-tag 
+            [value]="task?.category || ''"
+            [priority]="task?.priority || 'low'"></app-tag>
     </div>
 </div>

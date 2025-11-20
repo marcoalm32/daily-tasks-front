@@ -52,6 +52,17 @@ export class TaskService extends AbstractService<TaskModel> {
         description: 'Assistir série no fim de semana',
         title: 'Série',
         priority: 'low',
+      },
+      {
+        _id: '29384902384ndjef',
+        category: 'Contas',
+        status: 'in-progress',
+        dueDate: new Date(),
+        description: 'Pagar a conta de luz referente ao mês de outubro',
+        title: 'Conta de Luz',
+        priority: 'high',
+        isExpired: true,
+
       }
     ]
     return of({

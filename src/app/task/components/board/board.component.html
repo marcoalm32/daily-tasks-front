@@ -6,19 +6,36 @@
     </div>
 
     <div class="row">
-        <div *ngFor="let task of tasks" class="col-4 task">
-            <app-task-card *ngIf="task?.status === 'pending'" [task]="task"></app-task-card>
+        <div class="col-4">
+            <div class="stack">
+                <ng-container *ngFor="let task of (boardList.get('A Fazer') || [])">
+                    <div class="task">
+                        <app-task-card [task]="task"></app-task-card>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="stack">
+                <ng-container *ngFor="let task of (boardList.get('Em Andamento') || [])">
+                    <div class="task">
+                        <app-task-card [task]="task"></app-task-card>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="stack">
+                <ng-container *ngFor="let task of (boardList.get('Concluído') || [])">
+                    <div class="task">
+                        <app-task-card [task]="task"></app-task-card>
+                    </div>
+                </ng-container>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div *ngFor="let task of tasks" class="col-4 task">
-            <app-task-card *ngIf="task?.status === 'in-progress'" [task]="task"></app-task-card>
-        </div>
-    </div>
-    <div class="row">
-        <div *ngFor="let task of tasks" class="col-4 task">
-            <app-task-card *ngIf="task?.status === 'completed'" [task]="task"></app-task-card>
-        </div>
-    </div>
+    
 </section>

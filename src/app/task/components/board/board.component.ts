@@ -7,7 +7,7 @@ import { TaskModel } from '../../model/task.model';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrl: './board.component.scss'
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit, OnDestroy{
 
@@ -18,6 +18,7 @@ export class BoardComponent implements OnInit, OnDestroy{
   ];
   tasks: TaskModel[] = [];
   subscriptions: Subscription[] = [];
+  boardList: Map<string, TaskModel[]> = new Map<string, TaskModel[]>();
   constructor(
     private readonly router: Router,
     private readonly taskService: TaskService,
@@ -33,10 +34,31 @@ export class BoardComponent implements OnInit, OnDestroy{
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  setArrayBoards() {
+    this.boardList.set('A Fazer', []);
+    this.boardList.set('Em Andamento', []);
+    this.boardList.set('Concluído', []);
+
+    this.tasks.forEach(task => {
+      switch(task.status) {
+        case 'pending':
+          this.boardList.get('A Fazer')?.push(task);
+          break;
+        case 'in-progress':
+          this.boardList.get('Em Andamento')?.push(task);
+          break;
+        case 'completed':
+          this.boardList.get('Concluído')?.push(task);
+          break;
+      }
+    });
+  }
+
   getTasks(): void {
     const sub = this.taskService.get().subscribe({
       next: (response) => {
         this.tasks = response.data;
+        this.setArrayBoards();
       },
       error: (error) => {
         console.error('BoardComponent.getTasks.error', error);

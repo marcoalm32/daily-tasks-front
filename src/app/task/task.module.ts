@@ -7,6 +7,8 @@ import { BoardComponent } from './components/board/board.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TagComponent } from '../shared/components/tag/tag.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TaskRoutingModule,
     MatIconModule,
     ReactiveFormsModule,
-    
+    TagComponent,
+    MatTooltipModule,
   ]
 })
 export class TaskModule { }

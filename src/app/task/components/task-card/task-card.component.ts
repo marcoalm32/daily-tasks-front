@@ -8,8 +8,6 @@ import { TaskModel } from '../../model/task.model';
 })
 export class TaskCardComponent {
 
-  @Input() task: TaskModel | null = null
-  constructor() {
-
-  }
+  @Input() task: TaskModel | null = null;
+  @Input() alert: boolean = false;
 }

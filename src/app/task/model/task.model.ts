@@ -11,4 +11,5 @@ export interface TaskModel extends DefaultModel {
     priority: PriorityType;
     category: string;
     status: StatusType;
+    isExpired?: boolean;
 }

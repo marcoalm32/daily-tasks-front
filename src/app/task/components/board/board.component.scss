@@ -1,10 +1,22 @@
 .board {
     width: 100%;
-    background: #F0F8FF;
-    height: 100vh;
+        background: #F0F8FF;
+        height: 100vh;
+    
+        .board .stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 75%;
+        }
+    
+        .board .stack>* {
+            width: 100%;
+            box-sizing: border-box;
+        }
 
     .stepper {
-        width: 300px;
+        width: 250px;
         margin: 10px;
         padding: 1.5rem 2rem;
         display: flex;
@@ -13,7 +25,10 @@
     }
 
     .task {
-        width: 300px;
-        height: 250px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+        margin: 15px 0 15px 10px;
     }
 }

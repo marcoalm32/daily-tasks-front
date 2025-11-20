@@ -1,6 +1,21 @@
 .card {
     background-color: var(--background-white);
     width: 100%;
+    min-height: 150px;
     padding: 1rem;
     border-radius: 8px;
+
+    .title-card {
+        color: var(--blue-dark);
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .information {
+        color: var(--blue-base);
+    }
+}
+
+.alert-card {
+    border: 2px solid var(--status-danger);
 }
