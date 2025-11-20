@@ -12,5 +12,5 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class LogoComponent {
 
-  @Input() theme: 'light' | 'dark' = 'light';
+  @Input() theme: 'light' | 'dark' = 'dark';
 }

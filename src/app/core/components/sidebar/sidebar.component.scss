@@ -1,6 +1,6 @@
 .sidebar {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: linear-gradient(180deg, #E6F6FD 0%, #CFE9FB 50%, #F8FBFD 100%);
   padding: 1rem .2rem;
   box-sizing: border-box;
@@ -17,4 +17,9 @@ li {
     align-items: center;
     justify-content: space-between;
     width: 40%;
+}
+
+.active {
+    font-weight: bold;
+    color: var(--primary);
 }

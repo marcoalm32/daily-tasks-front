@@ -4,9 +4,9 @@
             <li 
                 *ngFor="let route of routes">
                 <a 
-                class="font-body route" 
-                [routerLink]="route.path" 
-                routerLinkActive="active">
+                    class="font-subtitle route" 
+                    [routerLink]="route.path" 
+                    routerLinkActive="active">
                     <mat-icon>{{route.icon}}</mat-icon>
                     <span>{{route.label}}</span>
                 </a>
