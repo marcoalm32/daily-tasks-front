@@ -1,0 +1,19 @@
+.board {
+    width: 100%;
+    background: #F0F8FF;
+    height: 100vh;
+
+    .stepper {
+        width: 300px;
+        margin: 10px;
+        padding: 1.5rem 2rem;
+        display: flex;
+        border-radius: 8px;
+        color: var(--background-white);
+    }
+
+    .task {
+        width: 300px;
+        height: 250px;
+    }
+}

@@ -1,0 +1,10 @@
+<div class="card">
+    <h3 class="font-subtitle">
+        {{ task?.title }}
+    </h3>
+    <p class="font-body mb-20">{{ task?.description }}</p>
+    <div class="mt-25 d-flex justify-space-evenly">
+        <mat-icon>calendar_month</mat-icon>
+        {{ task?.dueDate | date:'dd/MM/yyyy' }}
+    </div>
+</div>
