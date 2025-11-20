@@ -1,0 +1,24 @@
+<section class="board">
+    <div class="row">
+        <div *ngFor="let stepper of steppers" class="stepper font-title col-4" [style.backgroundColor]="stepper.color">
+            {{ stepper.label }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let task of tasks" class="col-4 task">
+            <app-task-card *ngIf="task?.status === 'pending'" [task]="task"></app-task-card>
+        </div>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let task of tasks" class="col-4 task">
+            <app-task-card *ngIf="task?.status === 'in-progress'" [task]="task"></app-task-card>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let task of tasks" class="col-4 task">
+            <app-task-card *ngIf="task?.status === 'completed'" [task]="task"></app-task-card>
+        </div>
+    </div>
+</section>

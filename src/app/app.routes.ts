@@ -10,6 +10,17 @@ export const routes: Routes = [
     {
         path: '',
         component: LayoutComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: '/tasks',
+                pathMatch: 'full'
+            },
+            {
+                path: 'tasks',
+                loadChildren: () => import('./task/task.module').then(m => m.TaskModule)
+            }
+        ]
     },
     { path: '**', redirectTo: 'auth/login' }
 ];
