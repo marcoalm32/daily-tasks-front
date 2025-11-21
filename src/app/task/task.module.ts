@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagComponent } from '../shared/components/tag/tag.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ButtonComponent } from '../shared/components/button/button.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ReactiveFormsModule,
     TagComponent,
     MatTooltipModule,
+    ButtonComponent,
+    MatButtonModule,
   ]
 })
 export class TaskModule { }

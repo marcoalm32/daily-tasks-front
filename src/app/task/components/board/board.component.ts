@@ -1,37 +1,34 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
-import { Subscription } from 'rxjs';
 import { TaskModel } from '../../model/task.model';
+import { AbstractListComponent } from '../../../shared/abstract/abstract-list.component';
+import { ServiceModel } from '../../../shared/models/service.model';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit, OnDestroy{
-
+export class BoardComponent extends AbstractListComponent<TaskModel>{
+  protected override service: ServiceModel<TaskModel>;
   steppers = [
     { label: 'A Fazer', color: 'var(--blue-navy)', icon: 'playlist_add' },
     { label: 'Em Andamento', color: 'var(--blue-dark)', icon: 'autorenew' },
     { label: 'Concluído', color: '#cfcacaff', icon: 'check_circle' },
   ];
-  tasks: TaskModel[] = [];
-  subscriptions: Subscription[] = [];
   boardList: Map<string, TaskModel[]> = new Map<string, TaskModel[]>();
   constructor(
-    private readonly router: Router,
-    private readonly taskService: TaskService,
+    protected override readonly router: Router,
+    protected readonly taskService: TaskService,
   ) {
-
+    super(router);
+    this.service = this.taskService;
   }
 
-  ngOnInit(): void {
-    this.getTasks();
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.setArrayBoards();
   }
 
   setArrayBoards() {
@@ -39,7 +36,7 @@ export class BoardComponent implements OnInit, OnDestroy{
     this.boardList.set('Em Andamento', []);
     this.boardList.set('Concluído', []);
 
-    this.tasks.forEach(task => {
+    this.items.forEach(task => {
       switch(task.status) {
         case 'pending':
           this.boardList.get('A Fazer')?.push(task);
@@ -52,19 +49,6 @@ export class BoardComponent implements OnInit, OnDestroy{
           break;
       }
     });
-  }
-
-  getTasks(): void {
-    const sub = this.taskService.get().subscribe({
-      next: (response) => {
-        this.tasks = response.data;
-        this.setArrayBoards();
-      },
-      error: (error) => {
-        console.error('BoardComponent.getTasks.error', error);
-      }
-    });
-    this.subscriptions.push(sub);
   }
 
 }

@@ -3,6 +3,7 @@
     --background-light: #F8F9FA;
     --background-white: #FFFFFF;
     --text-color: #212529;
+    --text-shadown: #888888;
 
     --blue-base: #007BFF;
     --blue-dark: #0056B3;
@@ -27,12 +28,6 @@ body {
 .header {
     background-color: var(--blue-navy);
     color: var(--background-white);
-}
-
-.primary-button {
-    background-color: var(--primary);
-    color: var(--background-white);
-    border: 1px solid var(--blue-dark);
 }
 
 .card-task {

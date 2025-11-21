@@ -1,21 +1,32 @@
-.card {
+.card-grid {
     background-color: var(--background-white);
     width: 100%;
     min-height: 150px;
     padding: 1rem;
     border-radius: 8px;
+}
 
-    .title-card {
-        color: var(--blue-dark);
-        font-size: 20px;
-        font-weight: 500;
-    }
-
-    .information {
-        color: var(--blue-base);
-    }
+.card-list {
+    min-height: 100px;
+    width: 97%;
+    padding: 1rem;
+    background-color: var(--background-white);
 }
 
 .alert-card {
     border: 2px solid var(--status-danger);
+}
+
+.information {
+    color: var(--text-shadown) !important;
+    font-weight: 500;
+}
+
+.date {
+    color: var(--blue-base);
+}
+
+.title-card {
+    color: var(--text-color);
+    font-size: 20px;
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskModel } from '../../model/task.model';
 
 @Component({
@@ -10,4 +10,8 @@ export class TaskCardComponent {
 
   @Input() task: TaskModel | null = null;
   @Input() alert: boolean = false;
+  @Input() format: 'list' | 'grid' = 'grid';
+
+  @Output() edit: EventEmitter<TaskModel | null> = new EventEmitter<TaskModel | null>();
+  @Output() delete: EventEmitter<boolean> = new EventEmitter<boolean>();
 }
