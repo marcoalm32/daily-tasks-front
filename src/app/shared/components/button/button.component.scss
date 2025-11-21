@@ -10,6 +10,36 @@
 .btn.info  { background-color: var(--status-info); }
 .btn.warning { background-color: var(--status-warning); }
 .btn.danger  { background-color: var(--status-danger); }
+.btn.link {background-color: transparent;}
+
+.icon.extra-large {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+}
+
+.icon.large {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.icon.medium {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.icon.small {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.icon.success { color: var(--blue-base); }
+.icon.info  { color: var(--status-info); }
+.icon.warning { color: var(--status-warning); }
+.icon.danger  { color: var(--status-danger); }
 
 .extra-large {
     padding: 20px 32px;

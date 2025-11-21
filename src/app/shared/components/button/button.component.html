@@ -1,9 +1,34 @@
-<button 
-    mat-raised-button
-    class="btn" 
-    [ngClass]="[size, color]"   
-    [style.color]="'#fff'"
-    [disabled]="disabled">
-    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
-    {{ label }}
-</button>
+<ng-container [ngSwitch]="variant">
+    <button 
+        *ngSwitchCase="'raised'" 
+        mat-raised-button class="btn" 
+        [ngClass]="[size, color]" 
+        [style.color]="'#fff'" 
+        [disabled]="disabled" 
+        (click)="onClick.emit()">
+        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+        {{ label }}
+    </button>
+
+    <button 
+        *ngSwitchCase="'icon'" 
+        mat-icon-button class="btn" 
+        [ngClass]="[size, color]" 
+        [disabled]="disabled" 
+        (click)="onClick.emit()">
+        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    </button>
+
+    <button
+        mat-button
+        *ngSwitchDefault class="btn" 
+        [ngClass]="[size]"
+        [disabled]="disabled" 
+        (click)="onClick.emit()">
+        <mat-icon 
+            class="icon" 
+            [ngClass]="[color, size]" 
+            *ngIf="icon">{{ icon }}</mat-icon>
+        {{ label }}
+    </button>
+</ng-container>

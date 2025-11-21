@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
@@ -18,8 +18,11 @@ export class ButtonComponent {
 
   @Input() label: string = '';
   @Input() icon: string = '';
-  @Input() color: 'success' | 'accent' | 'warning' | 'danger' = 'success';
+  @Input() color: 'success' | 'accent' | 'warning' | 'danger' | 'link' = 'success';
   @Input() disabled: boolean = false;
   @Input() size: 'small' | 'medium' | 'large' | 'extra-large'  = 'medium';
+  @Input() variant: 'raised' | 'flat' | 'stroked' | 'icon' | 'none' = 'raised';
+
+  @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
 }
