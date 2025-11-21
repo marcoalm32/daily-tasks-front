@@ -1,19 +1,19 @@
 .board {
     width: 100%;
-        background: #F0F8FF;
-        height: 100vh;
-    
-        .board .stack {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 75%;
-        }
-    
-        .board .stack>* {
-            width: 100%;
-            box-sizing: border-box;
-        }
+    background: #F0F8FF;
+    height: 100vh;
+
+    .board .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 75%;
+    }
+
+    .board .stack>* {
+        width: 100%;
+        box-sizing: border-box;
+    }
 
     .stepper {
         width: 250px;
