@@ -11,6 +11,10 @@ import { TagComponent } from '../shared/components/tag/tag.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ButtonComponent } from '../shared/components/button/button.component';
 import { MatButtonModule } from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FieldComponent } from '../shared/components/field/field.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -28,6 +32,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatTooltipModule,
     ButtonComponent,
     MatButtonModule,
+    MatDialogModule,
+    FieldComponent,
+    MatFormFieldModule,
+    MatInputModule,
   ]
 })
 export class TaskModule { }

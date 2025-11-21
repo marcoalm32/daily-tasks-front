@@ -1,0 +1,26 @@
+<div class="task-form">
+    <div class="form-header">
+        {{ isEditMode ? 'Editar Tarefa' : 'Nova Tarefa' }}
+    </div>
+
+    <form [formGroup]="form" class="row">
+        <div class="col-12"></div>
+        <app-field 
+            formControlName="description" 
+            label="Descrição"
+            placeholder="Digite a descrição da tarefa">
+        </app-field>
+        <div class="col-12">
+            <app-field 
+            formControlName="title" 
+            label="Título da tarefa"
+            placeholder="Digite o título da tarefa"></app-field>
+        </div>
+        <span class="label-control">Data de vencimento</span>
+            <mat-form-field appearance="outline" class="w-50">
+                <input matInput formControlName="dueDate" [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+    </form>
+</div>
