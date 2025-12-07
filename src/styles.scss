@@ -8,12 +8,18 @@
     --blue-base: #007BFF;
     --blue-dark: #0056B3;
     --blue-light: #E0F2FF;
+    --blue-lighter: #a0bedb;
     --blue-navy: #0C4B82;
 
     --status-success: #28A745;
     --status-info: #007BFF;
     --status-warning: #FFC107;
     --status-danger: #DC3545;
+    
+    --radius-xl: 20px;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --radius-sm: 4px;
 }
 
 body {
@@ -211,12 +217,24 @@ body {
   margin-left: 10px;
 }
 
+.ml-15 {
+  margin-left: 15px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
 .mr-5 {
   margin-right: 5px;
 }
 
 .mr-10 {
   margin-right: 10px;
+}
+
+.mr-15 {
+  margin-right: 15px;
 }
 
 .font-logo {
@@ -291,4 +309,14 @@ body {
 
 .mat-mdc-text-field-wrapper {
   border: 2px solid var(--blue-light) !important;
+}
+
+.mat-mdc-menu-content {
+  background-color: var(--background-white) !important;
+  min-width: 250px !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+.mat-mdc-menu-item:hover {
+  background-color: var(--shadow-2) !important;
 }
