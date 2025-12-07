@@ -2,8 +2,8 @@
     background-color: var(--background-white);
     width: 100%;
     min-height: 150px;
-    padding: 1rem;
-    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-md);
 }
 
 .card-list {

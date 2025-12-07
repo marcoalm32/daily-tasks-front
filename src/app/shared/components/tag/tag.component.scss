@@ -2,7 +2,7 @@
     max-width: 100px;
     width: auto;
     padding: 4px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     color: var(--background-white);
     box-sizing: border-box;
     opacity: 0.5;

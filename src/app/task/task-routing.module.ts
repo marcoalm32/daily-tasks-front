@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BoardComponent } from './components/board/board.component';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tasks',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
@@ -14,8 +15,16 @@ const routes: Routes = [
     component: BoardComponent
   },
   {
-    path: 'tasks',
+    path: '',
     component: TasksComponent
+  },
+  {
+    path: 'new',
+    component: TaskFormComponent
+  },
+  {
+    path: 'edit/:id',
+    component: TaskFormComponent
   }
 ];
 

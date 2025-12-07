@@ -1,8 +1,8 @@
 import { DefaultModel } from "../../shared/models/default.model";
 
-export type PriorityType = 'low' | 'medium' | 'high';
+export type PriorityType = 'Low' | 'Medium' | 'High';
 
-export type StatusType = 'pending' | 'in-progress' | 'completed';
+export type StatusType = 'Pending' | 'In Progress' | 'Completed';
 
 export interface TaskModel extends DefaultModel {
     title: string;

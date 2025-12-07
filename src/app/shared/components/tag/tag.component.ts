@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PriorityType } from '../../../task/model/task.model';
 
 @Component({
   selector: 'app-tag',
@@ -10,14 +11,14 @@ import { Component, Input } from '@angular/core';
 export class TagComponent {
 
   @Input() value: string = '';
-  @Input() priority: 'low' | 'medium' | 'high' = 'low';
+  @Input() priority: PriorityType = 'Low';
 
   get color(): string {
     const colors: { [key: string]: string } = {
-      low: 'var(--status-info)',
-      medium: 'var(--status-warning)',
-      high: 'var(--status-danger)',
+      Low: 'var(--status-info)',
+      Medium: 'var(--status-warning)',
+      High: 'var(--status-danger)',
     };
-    return colors[this.priority] || colors['low'];
+    return colors[this.priority] || colors['Low'];
   }
 }

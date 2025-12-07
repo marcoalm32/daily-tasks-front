@@ -15,7 +15,7 @@
     <div class="mt-15">
         <app-tag 
             [value]="task?.category || ''"
-            [priority]="task?.priority || 'low'">
+            [priority]="task?.priority || 'Low'">
         </app-tag>
     </div>
 </div>
@@ -33,7 +33,7 @@
     <div class="col-2 d-flex align-center justify-center">
         <app-tag 
             [value]="task?.category || ''"
-            [priority]="task?.priority || 'low'">
+            [priority]="task?.priority || 'Low'">
         </app-tag>
         <mat-icon 
             *ngIf="task?.isExpired"
@@ -47,14 +47,14 @@
             [icon]="'edit_document'"
             (click)="edit.emit(task)"
             [variant]="'none'"
-            [size]="'large'"
+            [iconSize]="'icon-lg'"
+            [iconColor]="'icon-primary'"
         />
-
         <app-button
             [icon]="'delete'"
             (click)="delete.emit()"
             [variant]="'none'"
-            [size]="'large'"
+            [iconSize]="'icon-lg'"
         />
     </div>
 </div>

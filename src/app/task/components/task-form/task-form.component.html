@@ -1,26 +1,77 @@
-<div class="task-form">
-    <div class="form-header">
-        {{ isEditMode ? 'Editar Tarefa' : 'Nova Tarefa' }}
-    </div>
 
+<app-container-form
+    [title]="isEditMode ? 'Editar Tarefa' : 'Nova Tarefa'"
+    [width]="700"
+    [minHeight]="400"
+    >
     <form [formGroup]="form" class="row">
-        <div class="col-12"></div>
-        <app-field 
-            formControlName="description" 
-            label="Descrição"
-            placeholder="Digite a descrição da tarefa">
-        </app-field>
         <div class="col-12">
+            <span class="font-title">Título da Tarefa</span>
             <app-field 
-            formControlName="title" 
-            label="Título da tarefa"
-            placeholder="Digite o título da tarefa"></app-field>
+                label="Título"
+                formControlName="title" 
+                placeholder="Digite o título da tarefa">
+            </app-field>
         </div>
-        <span class="label-control">Data de vencimento</span>
+        <div class="col-12">
+            <span class="font-title">Descrição</span>
+            <app-field 
+                label="Descrição"
+                formControlName="description" 
+                placeholder="Digite a descrição da tarefa">
+            </app-field>
+        </div>
+        <div class="col-12 d-flex justify-space-between">
+            <span class="font-title">Data de vencimento</span>
             <mat-form-field appearance="outline" class="w-50">
-                <input matInput formControlName="dueDate" [matDatepicker]="picker">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
+            <input matInput formControlName="dueDate" [matDatepicker]="picker1">
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="form.get('dueDate')?.invalid && form.get('dueDate')?.touched">
+                    {{ getErrorMessage('dueDate') }}
+                </mat-error>
             </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-space-between">
+            <span class="font-title">Categoria</span>
+            <app-field
+                label="Categoria"
+                formControlName="category" 
+                placeholder="Digite a categoria da tarefa">
+            </app-field>
+        </div>
+        <div class="col-12 d-flex justify-space-between">
+            <span class="font-title">Prioridade</span>
+            <app-dropdown
+                label="Prioridade"
+                [options]="categories"
+                formControlName="priority"
+                [displayProperty]="'label'"
+                [multiple]="false"
+                [idProperty]="'value'"
+            ></app-dropdown>
+        </div>
+        <div class="col-12 d-flex justify-space-between">
+            <span class="font-title">Status</span>
+            <mat-radio-group aria-label="Selecione o status" formControlName="status">
+                <mat-radio-button value="Pending">A fazer</mat-radio-button>
+                <mat-radio-button value="In Progress">Em andamento</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="col-12 mt-15 d-flex justify-space-around">
+            <app-button
+                label="Cancelar"
+                (click)="cancel()"
+                [color]="'link'"
+                [size]="'extra-large'"
+                >
+            </app-button>
+            <app-button
+                label="Salvar"
+                (click)="save()"
+                [size]="'extra-large'">
+            </app-button>
+        </div>
     </form>
-</div>
+</app-container-form>
+

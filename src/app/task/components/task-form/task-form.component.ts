@@ -1,49 +1,62 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TaskModel } from '../../model/task.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { PriorityType, TaskModel } from '../../model/task.model';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractFormComponent } from '../../../shared/abstract/abstract-form.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ResponseApi } from '../../../shared/models/response-api';
+import { dateValidator } from '../../../shared/validators/date-validator';
+import moment from 'moment';
 
 @Component({
   selector: 'app-task-form',
-  standalone: true,
-  imports: [],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss'
 })
-export class TaskFormComponent implements OnInit {
+export class TaskFormComponent extends AbstractFormComponent<TaskModel> {
 
   isEditMode: boolean = false;
   task: TaskModel | null = null;
-  form: FormGroup = new FormGroup({});
-  constructor(
-    private readonly taskService: TaskService,
-    public dialogRef: MatDialogRef<TaskFormComponent>,
-    private readonly fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: { isEditMode: boolean, task: TaskModel | null}
-  ) {
+  categories: Array<{value: PriorityType, label: string}> = [
+    {value: 'High', label: 'Alta'},
+    {value: 'Medium', label: 'Média'},
+    {value: 'Low', label: 'Baixa'},
+  ];
+  today = moment().format('YYYY-MM-DD');
 
-    this.isEditMode = data.isEditMode;
-    this.task = data.task;
+  constructor(
+    protected override readonly fb: FormBuilder,
+    protected override readonly route: ActivatedRoute,
+    protected override readonly router: Router,
+    protected readonly taskService: TaskService,
+  ) {
+    super(fb, route, router);
   }
 
-  ngOnInit(): void {
+
+  protected override createForm(): void {
     this.form = this.fb.group({
-      title: [this.task ? this.task.title : ''],
-      description: [this.task ? this.task.description : ''],
-      dueDate: [this.task ? this.task.dueDate : ''],
-      priority: [this.task ? this.task.priority : 'medium'],
-      category: [this.task ? this.task.category : 'general'],
+      title: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+      dueDate: [null, [Validators.required, dateValidator(this.today)]],
+      status: ['pending', [Validators.required]],
+      priority: [null, [Validators.required]],
+      category: [null, [Validators.required]],
     });
   }
 
-  cancel(): void {
-    this.dialogRef.close();
+  protected override getById(): Observable<ResponseApi<TaskModel>> {
+    return this.taskService.getById(this.id!);
   }
 
   save(): void {
-    if (this.form.valid) {
-      this.dialogRef.close(this.form.value);
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
     }
+
+    const taskData: TaskModel = this.form.value;
   }
+
 }
