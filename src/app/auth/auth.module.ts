@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LogoComponent } from '../shared/components/logo/logo.component';
 import { FieldComponent } from '../shared/components/field/field.component';
 import { ButtonComponent } from '../shared/components/button/button.component';
+import { ContainerFormComponent } from '../shared/components/container-form/container-form.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ButtonComponent } from '../shared/components/button/button.component';
     LogoComponent,
     FieldComponent,
     ButtonComponent,
+    ContainerFormComponent,
   ]
 })
 export class AuthModule { }

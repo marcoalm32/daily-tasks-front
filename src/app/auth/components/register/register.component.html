@@ -1,41 +1,42 @@
-<form [formGroup]="form" class="register">
-    <app-logo></app-logo>
-    <div class="col-12 mt-25">
-        <app-field 
-            formControlName="name" 
-            label="Nome"
-            placeholder="Digite seu nome completo"></app-field>
-        <app-field 
-            formControlName="email" 
-            label="Email"
-            placeholder="Digite seu e-mail"></app-field>
-        <app-field 
-            formControlName="password" 
-            label="Senha"
-            type="password" 
-            placeholder="Digite sua senha">
-        </app-field>
-        <app-field 
-            formControlName="confirmPassword" 
-            label="Confirme a senha"
-            type="password" 
-            placeholder="Confirme sua senha">
-        </app-field>
-    </div>
-    <div class="col-12 d-flex justify-space-around mt-20">
-        <app-button 
-            label="Salvar"
-            [size]="'large'"
-            (click)="register()" 
-            [disabled]="form.invalid"></app-button>
-        <app-button 
-            label="Cancelar"
-            [size]="'large'"
-            [color]="'warning'"
-            (click)="cancel()" 
-            [disabled]="form.invalid"></app-button>
-    </div>
-    <div class="col-12 d-flex justify-center mt-10">
-        <a class="font-body" routerLink="/auth/login">Já possuo conta</a>
-    </div>
-</form>
+<app-container-form [width]="550" [minHeight]="450">
+    <form [formGroup]="form" class="register">
+        <div class="col-12 mt-25">
+            <app-field 
+                formControlName="name" 
+                label="Nome"
+                placeholder="Digite seu nome completo"></app-field>
+            <app-field 
+                formControlName="email" 
+                label="Email"
+                placeholder="Digite seu e-mail"></app-field>
+            <app-field 
+                formControlName="password" 
+                label="Senha"
+                type="password" 
+                placeholder="Digite sua senha">
+            </app-field>
+            <app-field 
+                formControlName="confirmPassword" 
+                label="Confirme a senha"
+                type="password" 
+                placeholder="Confirme sua senha">
+            </app-field>
+        </div>
+        <div class="col-12 d-flex justify-space-around mt-20">
+            <app-button 
+                label="Salvar"
+                [size]="'large'"
+                (click)="register()" 
+                [disabled]="form.invalid"></app-button>
+            <app-button 
+                label="Cancelar"
+                [size]="'large'"
+                [color]="'warning'"
+                (click)="cancel()" 
+                [disabled]="form.invalid"></app-button>
+        </div>
+        <div class="col-12 d-flex justify-center mt-10">
+            <a class="font-body" routerLink="/auth/login">Já possuo conta</a>
+        </div>
+    </form>
+</app-container-form>

@@ -1,0 +1,13 @@
+<div 
+    class="container-form"
+    [style.width.px]="width"
+    [style.minHeight.px]="minHeight">
+    <div class="title" *ngIf="title">
+        <h2 class="font-title">{{ title }}</h2>
+    </div>
+    <div class="content">
+        <app-logo *ngIf="!title"></app-logo>
+        <ng-content></ng-content>
+    </div>
+
+</div>
