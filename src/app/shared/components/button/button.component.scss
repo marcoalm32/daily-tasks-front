@@ -3,43 +3,17 @@
     align-items: center;
     gap: 8px;
 
-
+    &:disabled {
+        cursor: not-allowed !important;
+        opacity: 0.6;
+    }
 }
 
 .btn.success { background-color: var(--blue-base); }
 .btn.info  { background-color: var(--status-info); }
 .btn.warning { background-color: var(--status-warning); }
 .btn.danger  { background-color: var(--status-danger); }
-.btn.link {background-color: transparent;}
-
-.icon.extra-large {
-    font-size: 28px;
-    width: 28px;
-    height: 28px;
-}
-
-.icon.large {
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
-}
-
-.icon.medium {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
-}
-
-.icon.small {
-    font-size: 16px;
-    width: 16px;
-    height: 16px;
-}
-
-.icon.success { color: var(--blue-base); }
-.icon.info  { color: var(--status-info); }
-.icon.warning { color: var(--status-warning); }
-.icon.danger  { color: var(--status-danger); }
+.btn.link {background-color: var(--blue-lighter);}
 
 .extra-large {
     padding: 20px 32px;
@@ -59,4 +33,40 @@
 .small {
     padding: 4px 8px;
     font-size: 14px;
+}
+
+.icon-sm{
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+}
+
+.icon-md {
+  font-size: 24px !important;
+  height: 24px !important;
+  width: 24px !important;
+}
+
+.icon-lg {
+  font-size: 36px !important;
+  height: 36px !important;
+  width: 36px !important;
+}
+
+.icon-xl {
+  font-size: 48px !important;
+  height: 48px !important;
+  width: 48px !important;
+}
+
+.icon-primary {
+  color: var(--blue-base)
+}
+
+.icon-warning {
+  color: var(--status-warning);
+}
+
+.icon-default {
+  color: var(--text-color);
 }

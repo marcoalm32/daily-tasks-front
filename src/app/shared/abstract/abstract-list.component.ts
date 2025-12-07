@@ -36,8 +36,9 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   protected getItems() {
     const subscription = this.service.get(this.pagination).subscribe({
         next: (response: ResponseApi<T[]>) => {
-            this.items = response.data;
+            this.items = response.data as any;
             this.pagination = response.pagination ? response.pagination : this.pagination;
+            this.getItemsValue();
         },
         error: (error: any) => {
             console.log(error)
@@ -45,6 +46,8 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
     })
     this.subscriptions.push(subscription);
   }
+
+  protected getItemsValue() {}
 
   protected navigateTo(path: string) {
     this.router.navigate([path]).then();

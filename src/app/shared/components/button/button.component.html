@@ -22,13 +22,13 @@
     <button
         mat-button
         *ngSwitchDefault class="btn" 
-        [ngClass]="[size]"
         [disabled]="disabled" 
         (click)="onClick.emit()">
-        <mat-icon 
-            class="icon" 
-            [ngClass]="[color, size]" 
-            *ngIf="icon">{{ icon }}</mat-icon>
-        {{ label }}
+        <mat-icon
+            class="icon"
+            [ngClass]="[iconSize, iconColor]"
+            *ngIf="icon">
+            {{ icon }}
+        </mat-icon>
     </button>
 </ng-container>
