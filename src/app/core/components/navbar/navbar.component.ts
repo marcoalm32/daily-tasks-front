@@ -3,8 +3,6 @@ import { LogoComponent } from '../../../shared/components/logo/logo.component';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DialogService } from '../../../shared/services/dialog.service';
-import { Dialog } from '../../../shared/models/dialog';
 import { MenuComponent } from '../../../shared/components/menu/menu.component';
 import { AuthService } from '../../../auth/service/auth.service';
 import { UserModel } from '../../../auth/models/user.model';
@@ -25,17 +23,8 @@ import { UserModel } from '../../../auth/models/user.model';
 export class NavbarComponent {
 
   constructor(
-    private dialogService: DialogService,
     private readonly authService: AuthService,
   ) {}
-
-
-  createTask(): void {
-    this.dialogService.openDialogSignal.set({
-      data: {},
-      dialog: new Dialog('Criar Tarefa', 'criar')
-    });
-  }
 
   get isAuthenticated(): boolean {
     return this.authService.isLoggedIn();
