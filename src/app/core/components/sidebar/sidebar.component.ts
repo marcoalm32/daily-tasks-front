@@ -15,7 +15,8 @@ export class SidebarComponent {
 
   routes: RouteModel[] = [
     { path: '/home', label: 'Home', icon: 'home' },
-    { path: '/tasks', label: 'Tasks', icon: 'task' },
-    { path: '/tasks/board', label: 'Board', icon: 'analytics' }
+    { path: '/tasks', label: 'Lista de tarefas', icon: 'task' },
+    { path: '/tasks/board', label: 'Board', icon: 'analytics' },
+    { path: '/tasks/new', label: 'Nova Tarefa', icon: 'add_circle' },
   ];
 }
