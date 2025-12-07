@@ -15,6 +15,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FieldComponent } from '../shared/components/field/field.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TaskFormComponent } from './components/task-form/task-form.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ContainerFormComponent } from '../shared/components/container-form/container-form.component';
+import { DropdownComponent } from '../shared/components/dropdown/dropdown.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -22,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     TasksComponent,
     BoardComponent,
     TaskCardComponent,
+    TaskFormComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +43,12 @@ import { MatInputModule } from '@angular/material/input';
     FieldComponent,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ContainerFormComponent,
+    DropdownComponent,
+    MatRadioModule,
+    ButtonComponent,
   ]
 })
 export class TaskModule { }

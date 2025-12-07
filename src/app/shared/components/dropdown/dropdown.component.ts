@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,9 +13,58 @@ import { MatSelectModule } from '@angular/material/select';
     CommonModule,
     ReactiveFormsModule,
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: DropdownComponent,
+      multi: true
+    }
+  ],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss'
 })
-export class DropdownComponent {
+export class DropdownComponent implements ControlValueAccessor {
 
+  @Input() options: any = [];
+  @Input() placeholder: string = 'Selecione uma opção';
+  @Input() label: string = '';
+  @Input() idProperty: string = 'id';
+  @Input() displayProperty: string = 'name';
+  @Input() floatLabel: 'always' | 'auto' | 'never' = 'auto';
+  @Input() width: string = '100%';
+  @Input() multiple: boolean = true;
+  @Input() selectedValue: string = 'id';
+
+  value: any = this.multiple ? [] : null;
+  disabled = false;
+
+  protected onChange = (value: any) => {};
+  protected onTouched = () => {};
+
+  writeValue(obj: any): void {
+    this.value = obj;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  onSelect(value: any): void {
+    this.value = value[this.selectedValue];
+    this.onChange(value);
+    this.onTouched();
+  }
+
+  get selectedLabel(): string {
+    const opt = this.options.find((option: any) => option[this.idProperty] === this.value);
+    return opt ? opt[this.displayProperty] : '';
+  }
 }

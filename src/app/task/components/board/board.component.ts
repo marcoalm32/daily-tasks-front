@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { TaskModel } from '../../model/task.model';
 import { AbstractListComponent } from '../../../shared/abstract/abstract-list.component';
-import { ServiceModel } from '../../../shared/models/service.model';
 
 @Component({
   selector: 'app-board',
@@ -11,9 +10,10 @@ import { ServiceModel } from '../../../shared/models/service.model';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent extends AbstractListComponent<TaskModel>{
-  protected override service: ServiceModel<TaskModel>;
+  protected override service: any;
+ 
   steppers = [
-    { label: 'A Fazer', color: 'var(--blue-navy)', icon: 'playlist_add' },
+    { label: 'A Fazer', color: 'var(--blue-lighter)', icon: 'playlist_add' },
     { label: 'Em Andamento', color: 'var(--blue-dark)', icon: 'autorenew' },
     { label: 'Concluído', color: '#cfcacaff', icon: 'check_circle' },
   ];
@@ -28,6 +28,10 @@ export class BoardComponent extends AbstractListComponent<TaskModel>{
 
   override ngOnInit(): void {
     super.ngOnInit();
+  }
+
+  override getItemsValue() {
+    super.getItemsValue();
     this.setArrayBoards();
   }
 
@@ -35,18 +39,19 @@ export class BoardComponent extends AbstractListComponent<TaskModel>{
     this.boardList.set('A Fazer', []);
     this.boardList.set('Em Andamento', []);
     this.boardList.set('Concluído', []);
-
     this.items.forEach(task => {
       switch(task.status) {
-        case 'pending':
+        case 'Pending':
           this.boardList.get('A Fazer')?.push(task);
           break;
-        case 'in-progress':
+        case 'In Progress':
           this.boardList.get('Em Andamento')?.push(task);
           break;
-        case 'completed':
+        case 'Completed':
           this.boardList.get('Concluído')?.push(task);
           break;
+        default:
+          this.boardList.get('A Fazer')?.push(task);
       }
     });
   }

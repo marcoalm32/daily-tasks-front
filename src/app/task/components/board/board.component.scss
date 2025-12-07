@@ -2,13 +2,8 @@
     width: 100%;
     background: #F0F8FF;
     height: 100vh;
-
-    .board .stack {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        width: 75%;
-    }
+    padding: 1rem;
+    padding-top: 2em;
 
     .board .stack>* {
         width: 100%;
@@ -20,7 +15,7 @@
         margin: 10px;
         padding: 1.5rem 2rem;
         display: flex;
-        border-radius: 8px;
+        border-radius: var(--radius-md);
         color: var(--background-white);
     }
 
@@ -28,7 +23,6 @@
         width: 250px;
         display: flex;
         flex-direction: column;
-        width: 65%;
-        margin: 15px 0 15px 10px;
+        margin: 10px;
     }
 }

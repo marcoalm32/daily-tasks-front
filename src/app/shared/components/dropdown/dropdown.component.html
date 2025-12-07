@@ -1,0 +1,23 @@
+<mat-form-field 
+    appearance="outline" 
+    [style.width]="width"
+    >
+    <mat-label>{{label}}</mat-label>
+    
+    <mat-select 
+        [multiple]="multiple"
+        [value]="value"
+        (selectionChange)="onSelect($event.value)">
+
+        <ng-container *ngIf="multiple">
+            <mat-select-trigger *ngIf="value">
+                {{ value }}
+            </mat-select-trigger>
+        </ng-container>
+
+        <mat-option *ngFor="let option of options" [value]="option[idProperty]">
+            {{ option[displayProperty] }}
+        </mat-option>
+    </mat-select>
+
+</mat-form-field>
