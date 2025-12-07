@@ -1,0 +1,32 @@
+<button 
+  mat-icon-button 
+  [matMenuTriggerFor]="menu" 
+  aria-label="Abrir menu do usuário">
+  <mat-icon 
+    style="width: 40px; height: 40px; font-size: 40px; color: #fff; margin-top: -5px;">
+    account_box
+  </mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item class="option-btn">
+    <mat-icon class="option-icon">account_circle</mat-icon>
+    <span>{{ user?.name }}</span>
+  </button>
+  <mat-divider></mat-divider>
+  <div *ngIf="isAuthenticated">
+    <button mat-menu-item (click)="onNavigate('/profile')" class="option-btn">
+      <mat-icon class="option-icon" fontSet="material-symbols-outlined">
+        list_alt
+      </mat-icon>
+      <span>Ver perfil</span>
+    </button>
+    <button 
+      mat-menu-item
+      class="option-btn"
+      (click)="logout.emit()">
+      <mat-icon class="option-icon">logout</mat-icon>
+      <span>Sair</span>
+    </button>
+  </div>
+</mat-menu>
