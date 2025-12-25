@@ -8,7 +8,6 @@
         <div class="col-12">
             <span class="font-title">Título da Tarefa</span>
             <app-field 
-                label="Título"
                 formControlName="title" 
                 placeholder="Digite o título da tarefa">
             </app-field>
@@ -16,7 +15,6 @@
         <div class="col-12">
             <span class="font-title">Descrição</span>
             <app-field 
-                label="Descrição"
                 formControlName="description" 
                 placeholder="Digite a descrição da tarefa">
             </app-field>
@@ -35,7 +33,6 @@
         <div class="col-12 d-flex justify-space-between">
             <span class="font-title">Categoria</span>
             <app-field
-                label="Categoria"
                 formControlName="category" 
                 placeholder="Digite a categoria da tarefa">
             </app-field>
@@ -43,7 +40,6 @@
         <div class="col-12 d-flex justify-space-between">
             <span class="font-title">Prioridade</span>
             <app-dropdown
-                label="Prioridade"
                 [options]="categories"
                 formControlName="priority"
                 [displayProperty]="'label'"
@@ -68,7 +64,7 @@
             </app-button>
             <app-button
                 label="Salvar"
-                (click)="save()"
+                (click)="create()"
                 [size]="'extra-large'">
             </app-button>
         </div>

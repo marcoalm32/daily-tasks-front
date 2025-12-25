@@ -1,26 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
-import { AbstractFormComponent } from '../../../shared/abstract/abstract-form.component';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from '../../models/user.model';
 import { ResponseApi } from '../../../shared/models/response-api';
+import { ToasterService } from '../../../shared/services/toaster.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent extends AbstractFormComponent<UserModel> {
+export class RegisterComponent implements OnInit {
 
+  form: FormGroup = new FormGroup({});
+  protected subscriptions: Subscription[] = [];
   constructor(
-    protected override readonly fb: FormBuilder,
-    protected override readonly route: ActivatedRoute,
-    protected override readonly router: Router,
+    private readonly fb: FormBuilder,
+    private readonly router: Router,
+    private readonly toasterService: ToasterService,
     private readonly authService: AuthService,
   ) {
-    super(fb, route, router);
+  }
+
+  ngOnInit(): void {
+    this.createForm();
   }
 
   createForm(): void {
@@ -32,10 +37,6 @@ export class RegisterComponent extends AbstractFormComponent<UserModel> {
     });
   }
 
-  protected override getById(id: string): Observable<ResponseApi<UserModel>> {
-    throw new Error('Method not implemented.');
-  }
-
   register(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -43,15 +44,21 @@ export class RegisterComponent extends AbstractFormComponent<UserModel> {
       return;
     }
     const subscription: Subscription = this.authService.register(this.form.value).subscribe({
-      next: (_) => {
+      next: (response: ResponseApi<UserModel>) => {
         this.form.reset();
         this.router.navigate(['/login']).then();
+        this.toasterService.show(response.message, 'success');
       }, 
       error: (err) => {
-        console.error('Registration error:', err);
+        this.toasterService.show(err.error.message || 'Erro ao registrar usuário', 'error');
       }
     });
     this.subscriptions.push(subscription);
+  }
+
+  cancel(): void {
+    this.form.reset();
+    this.router.navigate(['/login']).then();
   }
 
 }
