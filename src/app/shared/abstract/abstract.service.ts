@@ -1,26 +1,45 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { ResponseApi } from '../models/response-api';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { ServiceModel } from '../models/service.model';
+import { QueryParamsDto } from '../models/dto/query-params.dto';
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class AbstractService<T> {
-  
+export abstract class AbstractService<T> implements ServiceModel<T> {
   constructor(
     protected readonly endpoint: string,
     protected readonly http: HttpClient,
   ){}
 
-  abstract get(): Observable<ResponseApi<T[]>>;
+  get(params: QueryParamsDto): Observable<ResponseApi<T[]>> {
+    const httpParams = new HttpParams();
+    httpParams.set('page', params.page);
+    httpParams.set('limit', params.limit);
+    httpParams.set('search', params.search);
+    return this.http.get<ResponseApi<T[]>>(this.endpoint, {params: httpParams});
+  }
 
-  abstract getById(id: string): Observable<ResponseApi<T>>;
+  getById(id: string): Observable<ResponseApi<T>> {
+    const url = `${this.endpoint}/${id}`;
+    return this.http.get<ResponseApi<T>>(url);
+  }
 
-  abstract create(item: T): Observable<ResponseApi<T>>;
+  create(item: T): Observable<ResponseApi<T>> {
+     return this.http.post<ResponseApi<T>>(this.endpoint, item);
+  }
+  
+  update(id: string, item: T): Observable<ResponseApi<T>> {
+    const url = `${this.endpoint}/${id}`;
+    return this.http.patch<ResponseApi<T>>(url, item);
+  }
 
-  abstract update(id: string, item: T): Observable<ResponseApi<T>>;
+  delete(id: string): Observable<ResponseApi<null>> {
+    const url = `${this.endpoint}/${id}`;
+    return this.http.delete<ResponseApi<null>>(url);
+  }
 
-  abstract delete(id: string): Observable<ResponseApi<null>>;
+  
 }

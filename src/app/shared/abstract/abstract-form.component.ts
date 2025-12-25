@@ -1,13 +1,17 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, Inject, InjectionToken, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, of, Subscription, switchMap } from "rxjs";
 import { ResponseApi } from "../models/response-api";
+import { ToasterService } from "../services/toaster.service";
+import { ServiceModel } from "../models/service.model";
 
+const SERVICE_MODEL = new InjectionToken<ServiceModel<any>>('SERVICE_MODEL');
 @Component({
     template: ''
 })
 export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
+
 
     protected subscriptions: Subscription[] = [];
     protected data: T | T[] | null = null;
@@ -19,11 +23,13 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
         protected readonly fb: FormBuilder,
         protected readonly route: ActivatedRoute,
         protected readonly router: Router,
+        protected readonly toasterService: ToasterService,
+        @Inject(SERVICE_MODEL) protected readonly service: ServiceModel<T>,
     ) {}
 
     ngOnInit(): void {
-        this.createForm();
         this.getFormId();
+        this.createForm();
     }
 
     ngOnDestroy(): void {
@@ -49,7 +55,26 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
                 this.form.patchValue(response?.data || {});
             },
             error: (err) => {
-                console.error('Error fetching data by ID:', err);
+                this.toasterService.show(err.error.message, 'error');
+            }
+        });
+        this.subscriptions.push(subscription);
+    }
+
+    protected create() {
+        if (!this.service) return;
+        if (this.form.invalid) {
+            this.form.markAllAsTouched();
+            return;
+        }
+        const payload = this.form.value;
+        const subscription = this.service.create(payload).subscribe({
+            next: (response) => {
+                this.toasterService.show(response.message, 'success');
+                this.router.navigate(['../'], { relativeTo: this.route });
+            },
+            error: (err) => {
+                this.toasterService.show(err.error.message, 'error');
             }
         });
         this.subscriptions.push(subscription);

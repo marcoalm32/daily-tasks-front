@@ -4,6 +4,7 @@ import { PaginationModel } from '../models/pagination.model';
 import { ResponseApi } from '../models/response-api';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ServiceModel } from '../models/service.model';
+import { QueryParamsDto } from '../models/dto/query-params.dto';
 
 @Component({
     template: 'list'
@@ -13,10 +14,10 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   protected items: T[] = [];
   subscriptions: Subscription[] = [];
   pagination: PaginationModel = {
-    page: 0,
+    page: 1,
     pageSize: 9,
     totalItems: 0,
-    totalPages: 0
+    totalPages: 0,
   }
 
   constructor(
@@ -33,11 +34,16 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  protected getItems() {
-    const subscription = this.service.get(this.pagination).subscribe({
+  protected getItems(search: string = ''): void {
+    const params: QueryParamsDto = new QueryParamsDto(
+      this.pagination.page,
+      this.pagination.pageSize,
+      search
+    );
+    const subscription = this.service.get(params).subscribe({
         next: (response: ResponseApi<T[]>) => {
             this.items = response.data as any;
-            this.pagination = response.pagination ? response.pagination : this.pagination;
+            this.pagination = response.pagination as PaginationModel;
             this.getItemsValue();
         },
         error: (error: any) => {

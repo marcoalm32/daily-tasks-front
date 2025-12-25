@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { ResponseApi, ResponseBody } from '../../shared/models/response-api';
 import { LoginResponseModel } from '../models/login-response.model';
+import { UserDto } from '../models/dtos/user.dto';
+import { LoginDto } from '../models/dtos/login.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -75,14 +77,14 @@ export class AuthService {
     this.router.navigate(['/login']).then();
   }
 
-  register(user: UserModel): Observable<ResponseApi<UserModel>> {
+  register(user: UserDto): Observable<ResponseApi<UserModel>> {
     const endpoint = this.url + '/register';
     return this.http.post<ResponseApi<UserModel>>(endpoint, user);
   }
 
-  login(email: string, password: string): Observable<ResponseBody<LoginResponseModel>> {
+  login(dto: LoginDto): Observable<ResponseBody<LoginResponseModel>> {
     const endpoint = this.url + '/login';
-    return this.http.post<ResponseBody<LoginResponseModel>>(endpoint, { email, password })
+    return this.http.post<ResponseBody<LoginResponseModel>>(endpoint, { email: dto.email, password: dto.password })
       .pipe(
         tap((response: ResponseBody<LoginResponseModel>) => {
           localStorage.setItem(this.tokenKey, response.data.token);

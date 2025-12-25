@@ -1,5 +1,5 @@
 export interface DefaultModel {
-    _id?: any;
+    _id: unknown;
     createdAt?: Date;
     updatedAt?: Date;
 }
