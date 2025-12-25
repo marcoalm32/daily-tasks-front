@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { ResponseApi } from '../../../shared/models/response-api';
 import { dateValidator } from '../../../shared/validators/date-validator';
 import moment from 'moment';
+import { ToasterService } from '../../../shared/services/toaster.service';
 
 @Component({
   selector: 'app-task-form',
@@ -30,8 +31,9 @@ export class TaskFormComponent extends AbstractFormComponent<TaskModel> {
     protected override readonly route: ActivatedRoute,
     protected override readonly router: Router,
     protected readonly taskService: TaskService,
+    protected override readonly toasterService: ToasterService,
   ) {
-    super(fb, route, router);
+    super(fb, route, router, toasterService, taskService);
   }
 
 
@@ -48,15 +50,6 @@ export class TaskFormComponent extends AbstractFormComponent<TaskModel> {
 
   protected override getById(): Observable<ResponseApi<TaskModel>> {
     return this.taskService.getById(this.id!);
-  }
-
-  save(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
-
-    const taskData: TaskModel = this.form.value;
   }
 
 }

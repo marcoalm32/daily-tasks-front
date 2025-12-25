@@ -1,0 +1,4 @@
+<div class="snackbar-container font-subtitle" [ngClass]="data.type || 'success'">
+    <div class="snack-message">{{ data.message || "" }}</div>
+    <mat-icon class="icon" [ngClass]="data.type || 'success'">{{ icon }} </mat-icon>
+</div>

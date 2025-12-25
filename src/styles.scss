@@ -320,3 +320,7 @@ body {
 .mat-mdc-menu-item:hover {
   background-color: var(--shadow-2) !important;
 }
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: var(--background-white) !important;
+}
