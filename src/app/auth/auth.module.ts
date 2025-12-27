@@ -10,6 +10,7 @@ import { LogoComponent } from '../shared/components/logo/logo.component';
 import { FieldComponent } from '../shared/components/field/field.component';
 import { ButtonComponent } from '../shared/components/button/button.component';
 import { ContainerFormComponent } from '../shared/components/container-form/container-form.component';
+import { NgxMaskDirective } from 'ngx-mask';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ContainerFormComponent } from '../shared/components/container-form/cont
     FieldComponent,
     ButtonComponent,
     ContainerFormComponent,
+    NgxMaskDirective,
   ]
 })
 export class AuthModule { }

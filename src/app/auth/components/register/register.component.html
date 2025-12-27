@@ -1,37 +1,45 @@
-<app-container-form [width]="550" [minHeight]="450">
+<app-container-form [width]="'550px'" [minHeight]="'450px'">
     <form [formGroup]="form" class="register">
         <div class="col-12 mt-25">
             <app-field 
                 formControlName="name" 
-                label="Nome"
-                placeholder="Digite seu nome completo"></app-field>
+                [label]="message.name"
+                [placeholder]="message.placeholder.name"
+            ></app-field>
+            <app-field 
+                formControlName="phone" 
+                [label]="message.phone"
+                [placeholder]="message.placeholder.phone"
+                [mask]="'(00) 00000-0000'"
+            ></app-field>
             <app-field 
                 formControlName="email" 
-                label="Email"
-                placeholder="Digite seu e-mail"></app-field>
+                [label]="message.email"
+                [placeholder]="message.placeholder.email"
+            ></app-field>
             <app-field 
                 formControlName="password" 
-                label="Senha"
+                [label]="message.password"
                 type="password" 
-                placeholder="Digite sua senha">
-            </app-field>
+                [placeholder]="message.placeholder.password"
+            ></app-field>
             <app-field 
                 formControlName="confirmPassword" 
-                label="Confirme a senha"
+                [label]="message.confirm_password"
                 type="password" 
-                placeholder="Confirme sua senha">
-            </app-field>
+                [placeholder]="message.placeholder.confirm_password"
+            ></app-field>
         </div>
         <div class="col-12 d-flex justify-space-around mt-20">
             <app-button 
-                label="Cancelar"
+                [label]="message.cancel"
                 [size]="'large'"
                 [color]="'accent'"
                 (click)="cancel()"
                 [disabled]="form.invalid"
             ></app-button>
             <app-button 
-                label="Salvar"
+                [label]="message.save"
                 [size]="'large'"
                 (click)="register()" 
                 [disabled]="form.invalid"

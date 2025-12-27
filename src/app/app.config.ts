@@ -9,6 +9,8 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
+import { provideNgxMask } from 'ngx-mask';
+
 registerLocaleData(localePt);
 
 export const MY_DATE_FORMATS: MatDateFormats = {
@@ -30,7 +32,7 @@ export const appConfig: ApplicationConfig = {
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
-  
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    provideNgxMask()
   ]
 };
