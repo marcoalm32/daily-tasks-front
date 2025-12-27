@@ -28,8 +28,8 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
-        this.getFormId();
         this.createForm();
+        this.getFormId();
     }
 
     ngOnDestroy(): void {
@@ -69,6 +69,25 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
         }
         const payload = this.form.value;
         const subscription = this.service.create(payload).subscribe({
+            next: (response) => {
+                this.toasterService.show(response.message, 'success');
+                this.router.navigate(['../'], { relativeTo: this.route });
+            },
+            error: (err) => {
+                this.toasterService.show(err.error.message, 'error');
+            }
+        });
+        this.subscriptions.push(subscription);
+    }
+
+    protected update() {
+        if (!this.service || !this.id) return;
+        if (this.form.invalid) {
+            this.form.markAllAsTouched();
+            return;
+        }
+        const payload = this.form.value;
+        const subscription = this.service.update(this.id, payload).subscribe({
             next: (response) => {
                 this.toasterService.show(response.message, 'success');
                 this.router.navigate(['../'], { relativeTo: this.route });

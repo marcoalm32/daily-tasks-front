@@ -4,6 +4,7 @@ import { TaskModel } from '../../model/task.model';
 import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { ServiceModel } from '../../../shared/models/service.model';
+import { ModalService } from '../../../shared/services/modal.service';
 
 @Component({
   selector: 'app-tasks',
@@ -20,9 +21,10 @@ export class TasksComponent extends AbstractListComponent<TaskModel> {
   ];
   constructor(
     protected override readonly router: Router,
+    protected override readonly modalService: ModalService,
     protected readonly taskService: TaskService
   ) { 
-    super(router);
+    super(router, modalService, taskService);
     this.service = taskService;
   }
 

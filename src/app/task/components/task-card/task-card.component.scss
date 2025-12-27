@@ -4,6 +4,12 @@
     min-height: 150px;
     padding: 1.5rem 2rem;
     border-radius: var(--radius-md);
+    cursor: move;
+
+    .description {
+        height: 35px;
+        display: block;
+    }
 }
 
 .card-list {
