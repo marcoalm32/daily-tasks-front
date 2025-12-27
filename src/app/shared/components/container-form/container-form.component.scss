@@ -4,12 +4,19 @@
     background-color: var(--background-light);
 
     .title {
-        background-color: var(--blue-dark);
         display: flex;
         justify-content: center;
         padding-top: 1rem;
         color: var(--background-light);
         border-radius: var(--radius-md) var(--radius-md) 0 0;
+
+        &.primary {
+            background-color: var(--blue-dark);
+        }
+
+        &.link {
+            background-color: var(--text-shadown);
+        }
     }
 
     .content {

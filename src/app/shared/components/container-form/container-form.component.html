@@ -1,12 +1,12 @@
 <div 
     class="container-form"
-    [style.width.px]="width"
-    [style.minHeight.px]="minHeight">
-    <div class="title" *ngIf="title">
+    [style.width]="width"
+    [style.minHeight]="minHeight">
+    <div class="title" *ngIf="title" [ngClass]="headerBgColor">
         <h2 class="font-title">{{ title }}</h2>
     </div>
     <div class="content">
-        <app-logo *ngIf="!title"></app-logo>
+        <app-logo *ngIf="logo"></app-logo>
         <ng-content></ng-content>
     </div>
 

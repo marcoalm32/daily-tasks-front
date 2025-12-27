@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
@@ -15,6 +15,8 @@ import { LogoComponent } from '../logo/logo.component';
 export class ContainerFormComponent {
   
   @Input() title: string = '';
-  @Input() width: number = 400;
-  @Input() minHeight: number = 350;
+  @Input() width: string = '400px';
+  @Input() minHeight: string = '350px';
+  @Input() logo: boolean = true;
+  @Input() headerBgColor: 'primary' | 'link' = 'primary';
 }
