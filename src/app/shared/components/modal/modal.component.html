@@ -1,0 +1,20 @@
+<div class="modal">
+    <h2 mat-dialog-title class="font-title">{{data.title}}</h2>
+    <mat-dialog-content>
+        <p class="font-subtitle">{{data.message}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <app-button
+            label="Cancelar"
+            (click)="onCancel()"
+            [color]="'accent'"
+            >
+        </app-button>
+        <app-button
+            class="ml-15"
+            label="Confirmar"
+            (click)="onConfirm()"
+            >
+        </app-button>
+    </mat-dialog-actions>
+</div>
