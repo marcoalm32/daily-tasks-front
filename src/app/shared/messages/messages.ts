@@ -13,6 +13,7 @@ export const MESSAGES = {
     inputs: {
         email: 'Email',
         password: 'Senha',
+        phone: 'Telefone',
         confirm_password: 'Confirmar Senha',
         name: 'Nome',
         date_of_birth: 'Data de Nascimento',
@@ -27,7 +28,9 @@ export const MESSAGES = {
             email: 'Digite seu email',
             password: 'Digite sua senha',
             confirm_password: 'Confirme sua senha',
-
+            phone: 'Digite seu telefone',
+            name: 'Digite seu nome completo',
+            date_of_birth: 'Selecione sua data de nascimento'
         }
     }
 }
