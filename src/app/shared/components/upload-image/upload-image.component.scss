@@ -1,0 +1,12 @@
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 300px;
+
+    .icon {
+        font-size: 75px;
+        width: 75px;
+        height: 75px;
+    }
+}

@@ -1,0 +1,21 @@
+<div class="upload-container">
+    <mat-icon 
+        class="icon" 
+        *ngIf="!image">
+        photo_camera
+    </mat-icon>
+    <input 
+        type="image"
+        accept="image/*"
+        (change)="onFileSelected($event)">
+    <div *ngIf="preview" class="preview">
+        <img [src]="preview" alt="Image preview">
+    </div>
+    <button
+        (click)="sendImage()"
+        [disabled]="!selectedFile"
+    >
+        Selecionar Foto
+    </button>
+    <p *ngIf="error">{{ error }}</p>
+</div>
