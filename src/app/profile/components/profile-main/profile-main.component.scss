@@ -1,0 +1,12 @@
+.profile-main {
+    margin: 5em;
+
+    .upload {
+        width: 100px;
+        padding: 2em 4em;
+        display: flex;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: var(--blue-lighter);
+    }
+}

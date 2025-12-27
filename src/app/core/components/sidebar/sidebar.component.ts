@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class SidebarComponent {
 
   routes: RouteModel[] = [
-    { path: '/home', label: 'Home', icon: 'home' },
+    { path: '/profile', label: 'Meu Perfil', icon: 'home' },
     { path: '/tasks', label: 'Lista de tarefas', icon: 'task' },
     { path: '/tasks/board', label: 'Board', icon: 'analytics' },
     { path: '/tasks/new', label: 'Nova Tarefa', icon: 'add_circle' },
