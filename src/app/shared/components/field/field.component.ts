@@ -8,23 +8,33 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NgxMaskDirective } from 'ngx-mask';
+import { MESSAGES } from '../../messages/messages';
 
 @Component({
   selector: 'app-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.scss'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, CommonModule]
+  imports: [
+    MatFormFieldModule, 
+    MatInputModule, 
+    ReactiveFormsModule, 
+    CommonModule,
+    NgxMaskDirective,
+  ]
 })
 export class FieldComponent implements ControlValueAccessor {
 
   @Input() label = '';
   @Input() placeholder = '';
   @Input() type = 'text';
-  @Input() control: FormControl | null = null; // optional parent control
+  @Input() control: FormControl | null = null;
+  @Input() mask: string | null = null;
 
   value: any = '';
   disabled = false;
+  messages = MESSAGES;
 
   protected onChange = (value: any) => {};
   protected onTouched = () => {};
@@ -83,13 +93,14 @@ export class FieldComponent implements ControlValueAccessor {
     const errors = control?.errors;
     if (!errors) return '';
 
-    if (errors['required']) return 'Campo obrigatório';
-    if (errors['email']) return 'Email inválido';
-    if (errors['minlength']) return `Mínimo de ${errors['minlength'].requiredLength} caracteres`;
-    if (errors['maxlength']) return `Máximo de ${errors['maxlength'].requiredLength} caracteres`;
+    if (errors['required']) return this.messages.errors.required_field;
+    if (errors['email']) return this.messages.errors.invalid_email;
+    if (errors['minlength']) return this.messages.errors.min_length(errors['minlength'].requiredLength);
+    if (errors['maxlength']) return this.messages.errors.max_length(errors['maxlength'].requiredLength);
+    if (errors['passwordStrength']) return this.messages.errors.invalid_password;
 
     const firstKey = Object.keys(errors)[0];
-    return firstKey ? firstKey : 'Valor inválido';
+    return firstKey ? firstKey : this.messages.errors.invalid_field;
   }
 
 }
