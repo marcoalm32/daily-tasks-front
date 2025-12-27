@@ -7,6 +7,7 @@
     <mat-select 
         [multiple]="multiple"
         [value]="value"
+        [placeholder]="placeholder"
         (selectionChange)="onSelect($event.value)">
 
         <ng-container *ngIf="multiple">

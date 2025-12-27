@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@a
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MESSAGES } from '../../messages/messages';
 
 @Component({
   selector: 'app-dropdown',
@@ -26,7 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
 export class DropdownComponent implements ControlValueAccessor {
 
   @Input() options: any = [];
-  @Input() placeholder: string = 'Selecione uma opção';
+  @Input() placeholder: string = '';
   @Input() label: string = '';
   @Input() idProperty: string = 'id';
   @Input() displayProperty: string = 'name';
@@ -37,6 +38,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   value: any = this.multiple ? [] : null;
   disabled = false;
+  messages = MESSAGES;
 
   protected onChange = (value: any) => {};
   protected onTouched = () => {};
@@ -55,6 +57,10 @@ export class DropdownComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  constructor() {
+    this.placeholder = this.messages.inputs.placeholder.select_option;
   }
 
   onSelect(value: any): void {

@@ -6,64 +6,66 @@
     >
     <form [formGroup]="form" class="row">
         <div class="col-12">
-            <span class="font-title">Título da Tarefa</span>
+            <span class="font-title">{{ messages.inputs.title_task }}</span>
             <app-field 
                 formControlName="title" 
-                placeholder="Digite o título da tarefa">
+                [placeholder]="messages.inputs.placeholder.task">
             </app-field>
         </div>
         <div class="col-12">
-            <span class="font-title">Descrição</span>
+            <span class="font-title">{{ messages.inputs.description }}</span>
             <app-field 
                 formControlName="description" 
-                placeholder="Digite a descrição da tarefa">
+                [placeholder]="messages.inputs.placeholder.description">
             </app-field>
         </div>
-        <div class="col-12 d-flex justify-space-between">
-            <span class="font-title">Data de vencimento</span>
-            <mat-form-field appearance="outline" class="w-50">
+        <div class="col-12 row">
+            <span class="font-title col-5">{{ messages.inputs.due_date }}</span>
+            <mat-form-field appearance="outline" class="col-7">
                 <input matInput formControlName="dueDate" [matDatepicker]="picker1" placeholder="DD/MM/YYYY">
             <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
-                <mat-error *ngIf="form.get('dueDate')?.invalid && form.get('dueDate')?.touched">
-                    {{ getErrorMessage('dueDate') }}
-                </mat-error>
             </mat-form-field>
         </div>
-        <div class="col-12 d-flex justify-space-between">
-            <span class="font-title">Categoria</span>
+        <div class="col-12 row">
+            <span class="font-title col-5">{{ messages.inputs.category }}</span>
             <app-field
+                class="col-7"
                 formControlName="category" 
-                placeholder="Digite a categoria da tarefa">
+                [placeholder]="messages.inputs.placeholder.category">
             </app-field>
         </div>
-        <div class="col-12 d-flex justify-space-between">
-            <span class="font-title">Prioridade</span>
-            <app-dropdown
-                [options]="categories"
-                formControlName="priority"
-                [displayProperty]="'label'"
-                [multiple]="false"
-                [idProperty]="'value'"
-            ></app-dropdown>
+        <div class="col-12 row">
+            <span class="font-title col-5">{{ messages.inputs.priority }}</span>
+            <div class="col-7">
+                <app-dropdown
+                    class="col-10"
+                    [options]="categories"
+                    formControlName="priority"
+                    [displayProperty]="'label'"
+                    [multiple]="false"
+                    [idProperty]="'value'"
+                    [placeholder]="messages.inputs.placeholder.priority"
+                ></app-dropdown>
+            </div>
         </div>
-        <div class="col-12 d-flex justify-space-between">
-            <span class="font-title">Status</span>
-            <mat-radio-group aria-label="Selecione o status" formControlName="status">
-                <mat-radio-button value="Pending">A fazer</mat-radio-button>
-                <mat-radio-button value="In Progress">Em andamento</mat-radio-button>
+        <div class="col-12 row">
+            <span class="font-title col-2">{{ messages.inputs.status }}</span>
+            <mat-radio-group aria-label="Selecione o status" formControlName="status" class="col-10">
+                <mat-radio-button value="Pending">{{ messages.inputs.to_do }}</mat-radio-button>
+                <mat-radio-button value="In Progress">{{ messages.inputs.in_progress }}</mat-radio-button>
             </mat-radio-group>
         </div>
         <div class="col-12 mt-15 d-flex justify-space-around">
             <app-button
-                label="Cancelar"
+                [label]="messages.button.cancel"
                 (click)="cancel()"
                 [color]="'accent'"
                 [size]="'extra-large'"
                 >
             </app-button>
             <app-button
-                label="Salvar"
+                [label]="messages.button.save"
                 (click)="save()"
                 [size]="'extra-large'">
             </app-button>

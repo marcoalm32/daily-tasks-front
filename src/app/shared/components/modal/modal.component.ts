@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MESSAGES } from '../../messages/messages';
 
 @Component({
   selector: 'app-modal',
@@ -13,7 +14,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-
+  messages = MESSAGES;
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { title: string; message: string }

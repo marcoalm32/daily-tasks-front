@@ -5,14 +5,14 @@
     </mat-dialog-content>
     <mat-dialog-actions align="end">
         <app-button
-            label="Cancelar"
+            [label]="messages.button.cancel"
             (click)="onCancel()"
             [color]="'accent'"
             >
         </app-button>
         <app-button
             class="ml-15"
-            label="Confirmar"
+            [label]="messages.button.confirm"
             (click)="onConfirm()"
             >
         </app-button>

@@ -5,18 +5,18 @@
         <div class="col-12 mt-25">
             <app-field 
                 formControlName="email" 
-                [label]="message.email"
-                [placeholder]="message.placeholder.email"></app-field>
+                [label]="message.inputs.email"
+                [placeholder]="message.inputs.placeholder.email"></app-field>
             <app-field 
                 formControlName="password" 
-                [label]="message.password"
+                [label]="message.inputs.password"
                 type="password" 
-                [placeholder]="message.placeholder.password">
+                [placeholder]="message.inputs.placeholder.password">
             </app-field>
         </div>
         <div class="col-12 d-flex justify-center mt-25">
             <app-button 
-                [label]="message.enter"
+                [label]="message.button.enter"
                 [size]="'extra-large'"
                 (click)="login()" 
                 [disabled]="form.invalid"></app-button>

@@ -12,11 +12,40 @@ export const MESSAGES = {
     },
     inputs: {
         email: 'Email',
+        current_password: 'Senha Atual',
+        new_password: 'Nova Senha',
         password: 'Senha',
         phone: 'Telefone',
         confirm_password: 'Confirmar Senha',
         name: 'Nome',
         date_of_birth: 'Data de Nascimento',
+        title_task: 'Título da Tarefa',
+        description: 'Descrição',
+        due_date: 'Data de Vencimento',
+        category: 'Categoria',
+        priority: 'Prioridade',
+        status: 'Status',
+        to_do: 'A fazer',
+        in_progress: 'Em andamento',
+        done: 'Concluído',
+        placeholder: {
+            email: 'Digite seu email',
+            password: 'Digite sua senha',
+            confirm_password: 'Confirme sua senha',
+            current_password: 'Digite sua senha atual',
+            new_password: 'Digite sua nova senha',
+            phone: 'Digite seu telefone',
+            name: 'Digite seu nome completo',
+            date_of_birth: 'Selecione sua data de nascimento',
+            task: 'Digite a tarefa',
+            due_date: 'Selecione a data de vencimento',
+            description: 'Digite a descrição da tarefa',
+            category: 'Digite a categoria da tarefa',
+            priority: 'Selecione a prioridade da tarefa',
+            select_option: 'Selecione uma opção',
+        }
+    },
+    button: {
         submit: 'Enviar',
         cancel: 'Cancelar',
         search: 'Pesquisar',
@@ -24,13 +53,15 @@ export const MESSAGES = {
         update: 'Atualizar',
         enter: 'Entrar',
         register: 'Registrar',
-        placeholder: {
-            email: 'Digite seu email',
-            password: 'Digite sua senha',
-            confirm_password: 'Confirme sua senha',
-            phone: 'Digite seu telefone',
-            name: 'Digite seu nome completo',
-            date_of_birth: 'Selecione sua data de nascimento'
-        }
+        confirm: 'Confirmar'
+    },
+    notifications: {
+        loading: 'A paciência é uma virtude',
+    },
+    title: {
+        personal_info: 'Informações Pessoais',
+        account_security: 'Segurança da Conta',
+        profile: 'Perfil do Usuário',
+        tasks: 'Minhas Tarefas'
     }
 }

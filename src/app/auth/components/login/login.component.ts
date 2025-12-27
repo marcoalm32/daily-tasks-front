@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   protected subscriptions: Subscription[] = [];
-  message = MESSAGES.inputs;
+  message = MESSAGES;
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
