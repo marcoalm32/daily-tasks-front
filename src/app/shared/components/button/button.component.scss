@@ -5,12 +5,12 @@
 
     &:disabled {
         cursor: not-allowed !important;
-        opacity: 0.6;
+        opacity: 0.6 !important;
     }
 }
 
 .btn.success { background-color: var(--blue-base); }
-.btn.info  { background-color: var(--status-info); }
+.btn.accent  { background-color: var(--blue-lighter); }
 .btn.warning { background-color: var(--status-warning); }
 .btn.danger  { background-color: var(--status-danger); }
 .btn.link {background-color: var(--blue-lighter);}
@@ -68,5 +68,5 @@
 }
 
 .icon-default {
-  color: var(--text-color);
+  color: var(--blue-lighter);
 }

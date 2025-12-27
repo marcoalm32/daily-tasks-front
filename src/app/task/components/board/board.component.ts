@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { TaskModel } from '../../model/task.model';
 import { AbstractListComponent } from '../../../shared/abstract/abstract-list.component';
+import { ModalService } from '../../../shared/services/modal.service';
 
 @Component({
   selector: 'app-board',
@@ -20,9 +21,10 @@ export class BoardComponent extends AbstractListComponent<TaskModel>{
   boardList: Map<string, TaskModel[]> = new Map<string, TaskModel[]>();
   constructor(
     protected override readonly router: Router,
+    protected override readonly modalService: ModalService,
     protected readonly taskService: TaskService,
   ) {
-    super(router);
+    super(router, modalService, taskService);
     this.service = this.taskService;
   }
 
@@ -54,6 +56,11 @@ export class BoardComponent extends AbstractListComponent<TaskModel>{
           this.boardList.get('A Fazer')?.push(task);
       }
     });
+  }
+
+  drop(event: any, status: string) {
+    console.log(event, status);
+    
   }
 
 }
