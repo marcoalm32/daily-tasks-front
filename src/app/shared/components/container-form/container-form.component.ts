@@ -18,5 +18,5 @@ export class ContainerFormComponent {
   @Input() width: string = '400px';
   @Input() minHeight: string = '350px';
   @Input() logo: boolean = true;
-  @Input() headerBgColor: 'primary' | 'link' = 'primary';
+  @Input() headerBgColor: 'primary' | 'link' | 'none' = 'primary';
 }

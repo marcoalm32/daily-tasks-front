@@ -17,6 +17,11 @@
         &.link {
             background-color: var(--text-shadown);
         }
+
+        &.none {
+            background-color: var(--blue-light);
+            color: var(--text-color);
+        }
     }
 
     .content {

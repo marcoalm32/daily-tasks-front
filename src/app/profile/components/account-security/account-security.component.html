@@ -2,6 +2,40 @@
     [width]="'100%'"
     [minHeight]="'400px'"
     [title]="'Segurança da Conta'"
-    [headerBgColor]="'link'">
-    <form></form>
+    [headerBgColor]="'link'"
+    [logo]="false">
+    <form [formGroup]="form" class="row">
+        <div class="col-12">
+            <app-field 
+                [label]="messages.inputs.current_password"
+                [placeholder]="messages.inputs.placeholder.current_password"
+                formControlName="currentPassword"
+                [type]="'password'"
+            />
+        </div>
+        <div class="col-12">
+            <app-field 
+                [label]="messages.inputs.new_password"
+                [placeholder]="messages.inputs.placeholder.new_password"
+                formControlName="newPassword"
+                [type]="'password'"
+            />
+        </div>
+        <div class="col-12">
+            <app-field 
+                [label]="messages.inputs.confirm_password"
+                [placeholder]="messages.inputs.placeholder.confirm_password"
+                formControlName="confirmPassword"
+                [type]="'password'"
+            />
+        </div>
+        <div class="col-12">
+            <app-button 
+                [label]="messages.button.update" 
+                [size]="'large'" 
+                [disabled]="form.invalid"
+                (click)="create()"
+            />
+        </div>
+    </form>
 </app-container-form>

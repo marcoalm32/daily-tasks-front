@@ -7,6 +7,10 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
 import { AccountSecurityComponent } from './components/account-security/account-security.component';
 import { UploadImageComponent } from '../shared/components/upload-image/upload-image.component';
 import { ContainerFormComponent } from '../shared/components/container-form/container-form.component';
+import { FieldComponent } from '../shared/components/field/field.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonComponent } from '../shared/components/button/button.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -20,6 +24,10 @@ import { ContainerFormComponent } from '../shared/components/container-form/cont
     ProfileRoutingModule,
     UploadImageComponent,
     ContainerFormComponent,
+    FieldComponent,
+    ReactiveFormsModule,
+    ButtonComponent,
+    MatTabsModule,
   ]
 })
 export class ProfileModule { }
