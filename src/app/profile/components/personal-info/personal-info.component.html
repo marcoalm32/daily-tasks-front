@@ -2,6 +2,34 @@
     [width]="'100%'"
     [minHeight]="'400px'"
     [title]="'Informações Pessoais'"
+    [headerBgColor]="'none'"
     [logo]="false">
-    <form ></form>
+    <form [formGroup]="form" class="row">
+        <div class="col-12">
+            <app-field 
+                formControlName="name"
+                [label]="messages.inputs.name"
+                [placeholder]="messages.inputs.placeholder.name" />
+        </div>
+        <div class="col-12">
+            <app-field 
+                formControlName="email"
+                [label]="messages.inputs.email"
+                [placeholder]="messages.inputs.placeholder.email" />
+        </div>
+        <div class="col-12">
+            <app-field 
+                formControlName="phone"
+                [label]="messages.inputs.phone"
+                [placeholder]="messages.inputs.placeholder.phone" />
+        </div>
+        <div class="col-12">
+            <app-button
+                [label]="messages.button.save"
+                (click)="create()"
+                [size]="'large'"
+                [disabled]="form.invalid"
+            ></app-button>
+        </div>
+    </form>
 </app-container-form>
