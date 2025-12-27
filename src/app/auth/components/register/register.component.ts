@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from '../../models/user.model';
 import { ResponseApi } from '../../../shared/models/response-api';
 import { ToasterService } from '../../../shared/services/toaster.service';
+import { passwordValidator } from '../../../shared/validators/password.validator';
+import { MESSAGES } from '../../../shared/messages/messages';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +18,7 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   protected subscriptions: Subscription[] = [];
+  message = MESSAGES.inputs;
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
@@ -31,8 +34,9 @@ export class RegisterComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
+      phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, passwordValidator]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
   }

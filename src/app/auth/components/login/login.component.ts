@@ -4,6 +4,8 @@ import { AuthService } from '../../service/auth.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToasterService } from '../../../shared/services/toaster.service';
+import { passwordValidator } from '../../../shared/validators/password.validator';
+import { MESSAGES } from '../../../shared/messages/messages';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   protected subscriptions: Subscription[] = [];
+  message = MESSAGES.inputs;
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
@@ -29,7 +32,7 @@ export class LoginComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, passwordValidator]],
     });
   }
 

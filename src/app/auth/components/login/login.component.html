@@ -1,22 +1,22 @@
 <app-container-form
-    [minHeight]="350"
-    [width]="500">
+    [minHeight]="'350px'"
+    [width]="'500px'">
     <form [formGroup]="form" class="login">
         <div class="col-12 mt-25">
             <app-field 
                 formControlName="email" 
-                label="Email"
-                placeholder="Digite seu e-mail"></app-field>
+                [label]="message.email"
+                [placeholder]="message.placeholder.email"></app-field>
             <app-field 
                 formControlName="password" 
-                label="Senha"
+                [label]="message.password"
                 type="password" 
-                placeholder="Digite sua senha">
+                [placeholder]="message.placeholder.password">
             </app-field>
         </div>
         <div class="col-12 d-flex justify-center mt-25">
             <app-button 
-                label="Entrar"
+                [label]="message.enter"
                 [size]="'extra-large'"
                 (click)="login()" 
                 [disabled]="form.invalid"></app-button>
