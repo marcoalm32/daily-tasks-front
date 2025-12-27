@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskModel } from '../../model/task.model';
+import { Task } from 'zone.js/lib/zone-impl';
+
 
 @Component({
   selector: 'app-task-card',
@@ -12,6 +14,6 @@ export class TaskCardComponent {
   @Input() alert: boolean = false;
   @Input() format: 'list' | 'grid' = 'grid';
 
-  @Output() edit: EventEmitter<TaskModel | null> = new EventEmitter<TaskModel | null>();
-  @Output() delete: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() edit: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() delete: EventEmitter<Task | null> = new EventEmitter<Task | null>();
 }

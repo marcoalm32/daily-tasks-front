@@ -24,16 +24,18 @@
         </div>
         <div class="col-12 d-flex justify-space-around mt-20">
             <app-button 
+                label="Cancelar"
+                [size]="'large'"
+                [color]="'accent'"
+                (click)="cancel()"
+                [disabled]="form.invalid"
+            ></app-button>
+            <app-button 
                 label="Salvar"
                 [size]="'large'"
                 (click)="register()" 
-                [disabled]="form.invalid"></app-button>
-            <app-button 
-                label="Cancelar"
-                [size]="'large'"
-                [color]="'warning'"
-                (click)="cancel()" 
-                [disabled]="form.invalid"></app-button>
+                [disabled]="form.invalid"
+            ></app-button>
         </div>
         <div class="col-12 d-flex justify-center mt-10">
             <a class="font-body" routerLink="/auth/login">Já possuo conta</a>

@@ -9,7 +9,12 @@
     </div>
     <div class="row">
         <div *ngFor="let task of items" class="col-10 mt-15">
-            <app-task-card [task]="task" [format]="'list'"></app-task-card>
+            <app-task-card 
+                [task]="task" 
+                [format]="'list'"
+                (edit)="onEdit($event)"
+                (delete)="onDelete($event)"
+            ></app-task-card>
         </div>
     </div>
 </section>

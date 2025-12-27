@@ -21,6 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ContainerFormComponent } from '../shared/components/container-form/container-form.component';
 import { DropdownComponent } from '../shared/components/dropdown/dropdown.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { PipeModule } from '../shared/pipes/pipe.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -49,6 +51,9 @@ import { MatRadioModule } from '@angular/material/radio';
     DropdownComponent,
     MatRadioModule,
     ButtonComponent,
+    PipeModule,
+    MatTooltipModule,
+    DragDropModule,
   ]
 })
 export class TaskModule { }
