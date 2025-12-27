@@ -22,7 +22,7 @@
         <div class="col-12 d-flex justify-space-between">
             <span class="font-title">Data de vencimento</span>
             <mat-form-field appearance="outline" class="w-50">
-            <input matInput formControlName="dueDate" [matDatepicker]="picker1">
+                <input matInput formControlName="dueDate" [matDatepicker]="picker1" placeholder="DD/MM/YYYY">
             <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
                 <mat-error *ngIf="form.get('dueDate')?.invalid && form.get('dueDate')?.touched">
@@ -58,13 +58,13 @@
             <app-button
                 label="Cancelar"
                 (click)="cancel()"
-                [color]="'link'"
+                [color]="'accent'"
                 [size]="'extra-large'"
                 >
             </app-button>
             <app-button
                 label="Salvar"
-                (click)="create()"
+                (click)="save()"
                 [size]="'extra-large'">
             </app-button>
         </div>
