@@ -9,4 +9,13 @@
         border-radius: 50%;
         background-color: var(--blue-lighter);
     }
+
+    .historic {
+        margin-bottom: 2em;
+        
+        h3 {
+            color: var(--blue-navy);
+            font-weight: 500;
+        }
+    }
 }

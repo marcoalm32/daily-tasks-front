@@ -60,14 +60,14 @@
     <div class="col-2 d-flex align-center justify-space-evenly">
         <app-button
             [icon]="'edit_document'"
-            (click)="edit.emit(task._id)"
+            (onClick)="edit.emit(task._id)"
             [variant]="'none'"
             [iconSize]="'icon-lg'"
             [iconColor]="'icon-primary'"
         />
         <app-button
             [icon]="'delete'"
-            (click)="delete.emit(task)"
+            (onClick)="delete.emit(task)"
             [variant]="'none'"
             [iconSize]="'icon-lg'"
         />

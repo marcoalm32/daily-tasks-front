@@ -1,7 +1,7 @@
 export class AccountSecurityDTO {
     
     currentPassword: string = '';
-    password: string = '';
+    newPassword: string = '';
     confirmPassword: string = '';
 
     constructor(init?: Partial<AccountSecurityDTO>) {

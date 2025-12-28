@@ -1,14 +1,29 @@
 <section class="profile-main row">
-    <div class="col-12 upload">
+    <div class="col-4 upload">
         <app-upload-image></app-upload-image>
+    </div>
+    <div class="col-8 historic">
+        <h2 class="font-logo">
+            {{ messages.title.activity_history }}
+        </h2>
+        <h3 class="font-title">
+            Usuário desde: {{ user?.createdAt | date: 'dd/MM/yyyy - HH:mm' }}
+        </h3>
+        <h3 class="font-title">
+            Última atualização: {{ user?.updatedAt | date: 'dd/MM/yyyy - HH:mm' }}
+        </h3>
     </div>
     <div class="col-8">
         <mat-tab-group>
             <mat-tab [label]="messages.title.personal_info">
-                <app-personal-info></app-personal-info>
+                <app-personal-info
+                    [user]="user"
+                ></app-personal-info>
             </mat-tab>
             <mat-tab [label]="messages.title.account_security">
-                <app-account-security></app-account-security>
+                <app-account-security
+                    [userId]="user?._id"
+                ></app-account-security>
             </mat-tab>
         </mat-tab-group>
     </div>

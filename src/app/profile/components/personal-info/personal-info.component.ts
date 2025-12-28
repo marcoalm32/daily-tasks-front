@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form.component';
 import { PersonalInfoModel } from '../../models/personal-info.model';
 import { Observable } from 'rxjs';
@@ -13,7 +13,10 @@ import { ProfileService } from '../../services/profile.service';
   templateUrl: './personal-info.component.html',
   styleUrl: './personal-info.component.scss'
 })
-export class PersonalInfoComponent extends AbstractFormComponent<PersonalInfoModel> {
+export class PersonalInfoComponent extends AbstractFormComponent<PersonalInfoModel> implements OnChanges {
+  
+  @Input() user: PersonalInfoModel | null = null;
+
   constructor(
     protected override readonly fb: FormBuilder,
     protected override readonly route: ActivatedRoute,
@@ -32,8 +35,32 @@ export class PersonalInfoComponent extends AbstractFormComponent<PersonalInfoMod
     });
   }
 
+  override ngOnInit(): void {
+    this.createForm();
+    this.getFormId();
+    this.form.disable();
+  }
+
   protected override getById(id: string): Observable<ResponseApi<PersonalInfoModel>> {
     return this.profileService.getById(id);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['user'] && this.user) {
+      this.form.patchValue({
+        name: this.user.name,
+        phone: this.user.phone,
+        email: this.user.email,
+      });
+    }
+  }
+
+  onEdit(): void {
+    this.form.enable();
+  }
+
+  protected override cancel(): void {
+    this.form.disable();
   }
 
 }

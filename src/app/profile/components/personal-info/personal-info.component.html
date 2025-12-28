@@ -21,12 +21,28 @@
             <app-field 
                 formControlName="phone"
                 [label]="messages.inputs.phone"
+                mask="(00) 00000-0000"
                 [placeholder]="messages.inputs.placeholder.phone" />
         </div>
-        <div class="col-12">
+        <div class="col-12 d-flex justify-space-around gap-3 mt-4">
+            <app-button
+                *ngIf="form.enabled"
+                [label]="messages.button.cancel"
+                (onClick)="cancel()"
+                [color]="'link'"
+                [size]="'large'"
+            ></app-button>
+            <app-button
+                *ngIf="form.disabled"
+                [label]="messages.button.edit"
+                (onClick)="onEdit()"
+                [color]="'link'"
+                [size]="'large'"
+                [disabled]="form.invalid"
+            ></app-button>
             <app-button
                 [label]="messages.button.save"
-                (click)="create()"
+                (onClick)="save()"
                 [size]="'large'"
                 [disabled]="form.invalid"
             ></app-button>
