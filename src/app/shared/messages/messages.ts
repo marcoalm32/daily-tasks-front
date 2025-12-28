@@ -53,7 +53,8 @@ export const MESSAGES = {
         update: 'Atualizar',
         enter: 'Entrar',
         register: 'Registrar',
-        confirm: 'Confirmar'
+        confirm: 'Confirmar',
+        edit: 'Editar',
     },
     notifications: {
         loading: 'A paciência é uma virtude',
@@ -62,6 +63,7 @@ export const MESSAGES = {
         personal_info: 'Informações Pessoais',
         account_security: 'Segurança da Conta',
         profile: 'Perfil do Usuário',
-        tasks: 'Minhas Tarefas'
+        tasks: 'Minhas Tarefas',
+        activity_history: 'Histórico de Atividades',
     }
 }
