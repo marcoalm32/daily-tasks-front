@@ -2,15 +2,13 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PaginationModel } from '../models/pagination.model';
 import { ResponseApi } from '../models/response-api';
-import { Component, Inject, InjectionToken, OnDestroy, OnInit } from '@angular/core';
+import { Directive, Inject, InjectionToken, OnDestroy, OnInit } from '@angular/core';
 import { ServiceModel } from '../models/service.model';
 import { QueryParamsDto } from '../models/dto/query-params.dto';
 import { ModalService } from '../services/modal.service';
 
 const SERVICE_MODEL = new InjectionToken<ServiceModel<any>>('SERVICE_MODEL');
-@Component({
-    template: 'list'
-})
+@Directive()
 
 export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   protected items: T[] = [];

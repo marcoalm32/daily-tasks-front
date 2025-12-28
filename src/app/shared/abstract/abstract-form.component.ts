@@ -1,4 +1,4 @@
-import { Component, Inject, InjectionToken, OnDestroy, OnInit } from "@angular/core";
+import { Component, Directive, Inject, InjectionToken, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, of, Subscription, switchMap } from "rxjs";
@@ -8,9 +8,7 @@ import { ServiceModel } from "../models/service.model";
 import { MESSAGES } from "../messages/messages";
 
 const SERVICE_MODEL = new InjectionToken<ServiceModel<any>>('SERVICE_MODEL');
-@Component({
-    template: ''
-})
+@Directive()
 export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
 
 
@@ -62,6 +60,14 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
             }
         });
         this.subscriptions.push(subscription);
+    }
+
+    protected save(): void {
+        if (this.editMode) {
+            this.update();
+        } else {
+            this.create();
+        }
     }
 
     protected create() {
