@@ -34,14 +34,13 @@
             <app-button 
                 [label]="message.button.cancel"
                 [size]="'large'"
-                [color]="'accent'"
-                (click)="cancel()"
-                [disabled]="form.invalid"
+                [color]="'link'"
+                (onClick)="cancel()"
             ></app-button>
             <app-button 
                 [label]="message.button.save"
                 [size]="'large'"
-                (click)="register()" 
+                (onClick)="register()"
                 [disabled]="form.invalid"
             ></app-button>
         </div>

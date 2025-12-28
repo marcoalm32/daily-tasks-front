@@ -52,12 +52,4 @@ export class TaskFormComponent extends AbstractFormComponent<TaskModel> {
     return this.taskService.getById(this.id!);
   }
 
-  save(): void {
-    if (this.editMode) {
-      this.update();
-    } else {
-      this.create();
-    }
-  }
-
 }
