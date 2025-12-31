@@ -291,6 +291,10 @@ body {
   font-size: 12px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 :host ::ng-deep .mat-form-field-flex {
   background-color: #f0f0f0;
 }

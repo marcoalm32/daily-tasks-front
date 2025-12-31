@@ -5,47 +5,38 @@
         </div>
     </div>
 
-    <div class="row" cdkDropListGroup>
+    <div class="row">
         <div class="col-4">
-            <div 
-                class="stack" 
-                cdkDropList
-                [cdkDropListData]="boardList.get('A Fazer')"
-                (cdkDropListDropped)="drop($event, 'A Fazer')">
+            <div class="stack">
                 <div 
                     class="task" 
-                    *ngFor="let task of (boardList.get('A Fazer') || [])"
-                    cdkDrag>
-                    <app-task-card [task]="task"></app-task-card>
+                    *ngFor="let task of (boardList.get('A Fazer') || [])">
+                    <app-task-card 
+                        [task]="task"
+                        (edit)="updateStatus($event)"
+                    ></app-task-card>
                 </div>
             </div>
         </div>
 
         <div class="col-4">
-            <div 
-                class="stack" 
-                cdkDropList
-                [cdkDropListData]="boardList.get('Em Andamento')"
-                (cdkDropListDropped)="drop($event, 'Em Andamento')">
+            <div class="stack">
                 <div 
                     class="task" 
-                    *ngFor="let task of (boardList.get('Em Andamento') || [])"
-                    cdkDrag>
-                    <app-task-card [task]="task"></app-task-card>
+                    *ngFor="let task of (boardList.get('Em Andamento') || [])">
+                    <app-task-card 
+                        [task]="task"
+                        (edit)="updateStatus($event)"
+                    ></app-task-card>
                 </div>
             </div>
         </div>
 
         <div class="col-4">
-            <div 
-                class="stack" 
-                cdkDropList
-                [cdkDropListData]="boardList.get('Concluído')"
-                (cdkDropListDropped)="drop($event, 'Concluído')">
+            <div class="stack">
                 <div 
                     class="task" 
-                    *ngFor="let task of (boardList.get('Concluído') || [])"
-                    cdkDrag>
+                    *ngFor="let task of (boardList.get('Concluído') || [])">
                     <app-task-card [task]="task"></app-task-card>
                 </div>
             </div>

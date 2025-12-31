@@ -1,6 +1,5 @@
 <div 
     *ngIf="format === 'grid'"
-    (cdkDragEnded)="onDragEnd($event)"
     class="card-grid" 
     [ngClass]="{ 'alert-card': task?.isExpired }">
     <div class="font-title mb-10 d-flex justify-space-between align-center ">
@@ -23,11 +22,18 @@
         <mat-icon>calendar_month</mat-icon>
         <span class="font-body ml-10">Data: {{ task?.dueDate | date:'dd/MM/yyyy' }}</span>
     </div>
-    <div class="mt-15">
+    <div class="mt-15 d-flex justify-space-between">
         <app-tag 
             [value]="task?.category || ''"
             [priority]="task?.priority || 'Low'">
         </app-tag>
+        <app-button
+            [icon]="'edit_square'"
+            (onClick)="edit.emit(task._id)"
+            [variant]="'none'"
+            [iconSize]="'icon-lg'"
+            [iconColor]="'icon-primary'"
+        />
     </div>
 </div>
 

@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MESSAGES } from '../../messages/messages';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-modal',
@@ -9,6 +10,7 @@ import { MESSAGES } from '../../messages/messages';
   imports: [
     ButtonComponent,
     MatDialogModule,
+    MatIconModule,
   ],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'

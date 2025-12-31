@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
-import { TaskModel } from '../../model/task.model';
+import { StatusType, TaskModel } from '../../model/task.model';
 import { AbstractListComponent } from '../../../shared/abstract/abstract-list.component';
 import { ModalService } from '../../../shared/services/modal.service';
 
@@ -58,9 +58,8 @@ export class BoardComponent extends AbstractListComponent<TaskModel>{
     });
   }
 
-  drop(event: any, status: string) {
-    console.log(event, status);
-    
+  updateStatus(task: TaskModel, status: StatusType) {
+    this.modalService.confirm('Atualizar Status', `Deseja mover a tarefa "${task.title}" para "${status}"?`);
   }
 
 }
