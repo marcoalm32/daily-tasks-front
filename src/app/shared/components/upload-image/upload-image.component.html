@@ -1,21 +1,42 @@
+
 <div class="upload-container">
-    <mat-icon 
-        class="icon" 
-        *ngIf="!image">
-        photo_camera
-    </mat-icon>
-    <input 
-        type="image"
-        accept="image/*"
-        (change)="onFileSelected($event)">
-    <div *ngIf="preview" class="preview">
-        <img [src]="preview" alt="Image preview">
+    <div class="img-container">
+        <h3 class="title">
+        {{ message.title.uploadImageTitle }}
+        </h3>
+        <mat-icon 
+            class="icon" 
+            *ngIf="!previewUrl && !imageUrl">
+            photo_camera
+        </mat-icon>
+        <img 
+            *ngIf="imageUrl"
+            [src]="viewImageUrl + imageUrl"
+            alt="preview"
+            width="120"
+            class="mb-15"
+        />
     </div>
-    <button
-        (click)="sendImage()"
-        [disabled]="!selectedFile"
+    <input 
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/"
+        hidden #fileInput    
     >
-        Selecionar Foto
-    </button>
-    <p *ngIf="error">{{ error }}</p>
+    <div class="d-flex justify-space-evenly w-75">
+        <app-button
+            [icon]="'drive_folder_upload'"
+            (onClick)="fileInput.click()"
+            [variant]="'none'"
+            [iconSize]="'icon-lg'"
+            [iconColor]="'icon-primary'"
+        />
+        <app-button
+            *ngIf="previewUrl && imageUrl"
+            (onClick)="sendImage()"
+            [color]="'success'"
+            [label]="message.button.submit"
+            [size]="'small'"
+        />
+    </div>
 </div>

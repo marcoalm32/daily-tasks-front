@@ -11,19 +11,22 @@ export class AuthInterceptor implements HttpInterceptor {
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        
         const token = this.authService.getToken();
         const isValid = this.authService.isTokenValid();
 
-        if(token && isValid) {
-            req = req.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+        let headers = req.headers;
+
+        if (token && isValid) {
+            headers = headers.set('Authorization', `Bearer ${token}`);
         }
 
-        return next.handle(req).pipe(
+        if (headers.has('Content-Type') && req.body instanceof FormData) {
+            headers = headers.delete('Content-Type');
+        }
+
+        const authReq = req.clone({ headers });
+
+        return next.handle(authReq).pipe(
             catchError((error) => {
                 if (error.status === 401) {
                     this.authService.logout();

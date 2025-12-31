@@ -4,4 +4,5 @@ export interface PersonalInfoModel extends DefaultModel {
     name: string;
     email: string;
     phone: string;
+    imageUrl?: string | null;
 }

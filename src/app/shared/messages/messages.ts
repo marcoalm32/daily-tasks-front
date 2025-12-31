@@ -58,6 +58,7 @@ export const MESSAGES = {
     },
     notifications: {
         loading: 'A paciência é uma virtude',
+        noImageSelected: 'Nenhuma imagem selecionada.',
     },
     title: {
         personal_info: 'Informações Pessoais',
@@ -65,5 +66,6 @@ export const MESSAGES = {
         profile: 'Perfil do Usuário',
         tasks: 'Minhas Tarefas',
         activity_history: 'Histórico de Atividades',
+        uploadImageTitle: 'Carregar Imagem',
     }
 }

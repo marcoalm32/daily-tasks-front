@@ -30,5 +30,9 @@ export class ProfileService extends AbstractService<PersonalInfoModel> {
     return this.http.put<ResponseApi<boolean>>(`${this.endpoint}/account-security/${id}`, item);
   }
 
-  
+  updateProfilePicture(userId: string, file: File): Observable<ResponseApi<string>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.put<ResponseApi<string>>(`${this.endpoint}/upload/${userId}`, formData);
+  }
 }

@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MESSAGES } from '../../messages/messages';
+import { ButtonComponent } from '../button/button.component';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-upload-image',
@@ -8,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     MatIconModule,
     CommonModule,
+    MatCardModule,
+    ButtonComponent,
   ],
   templateUrl: './upload-image.component.html',
   styleUrl: './upload-image.component.scss'
@@ -15,42 +21,37 @@ import { MatIconModule } from '@angular/material/icon';
 export class UploadImageComponent {
 
   selectedFile: File | null = null;
-  preview: string | ArrayBuffer | null = null;
+  previewUrl: string | ArrayBuffer | null = null;
   error: string | null = null;
-  @Input() image: string | null = null;
+  message = MESSAGES;
+  @Input() imageUrl: string | null = null;
   @Output() imageUploaded = new EventEmitter<File>();
+  //To Do: url para capturar a imagem de forma provisória em modo de DEV
+  viewImageUrl: string = 'http://localhost:3000'
+  
 
-  constructor() {
+  constructor(
+    private readonly toasterService: ToasterService,
+  ) {
 
   }
 
   sendImage() {
-    if (this.selectedFile) {
-      this.imageUploaded.emit(this.selectedFile);
-    }
+    if (!this.selectedFile) {
+      this.toasterService.show(this.message.notifications.noImageSelected, 'warning');
+      return;
+    };
+    this.imageUploaded.emit(this.selectedFile!);
   }
 
   onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length) {
-      const file = input.files[0];
-
-      if (!file.type.startsWith('image/')) {
-        this.error = 'Por favor, selecione um arquivo de imagem.';
-        return;
-      }
-
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
       this.selectedFile = file;
-
       const reader = new FileReader();
-      reader.onload = () => {
-        this.preview = reader.result;
-      }
+      reader.onload = e => this.previewUrl = reader.result;
       reader.readAsDataURL(file);
     }
   }
 
-  getImageBase64(base64: string) {
-    this.preview = base64;
-  }
 }

@@ -2,11 +2,30 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-width: 300px;
+    max-width: 350px;
+    min-height: 200px;
+    background-color: transparent;
+    border: none !important;
 
-    .icon {
-        font-size: 75px;
-        width: 75px;
-        height: 75px;
+    .img-container {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .title {
+            font-size: 16px !important;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .icon {
+            font-size: 75px;
+            width: 75px;
+            height: 75px;
+        }
     }
+
+    
 }

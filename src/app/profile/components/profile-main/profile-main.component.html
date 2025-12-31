@@ -1,6 +1,9 @@
 <section class="profile-main row">
     <div class="col-4 upload">
-        <app-upload-image></app-upload-image>
+        <app-upload-image
+            [imageUrl]="user?.imageUrl"
+            (imageUploaded)="onImageUploaded($event)"
+        ></app-upload-image>
     </div>
     <div class="col-8 historic">
         <h2 class="font-logo">
