@@ -1,0 +1,12 @@
+.change-status-container {
+
+    .status {
+        width: 20%;
+    }
+    .bar {
+        height: 15px;
+        width: 100%;
+        background-color: var(--blue-lighter);
+        margin-top: 8px;
+    }
+}

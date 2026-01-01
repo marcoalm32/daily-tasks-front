@@ -4,6 +4,7 @@ import { TaskService } from '../../services/task.service';
 import { StatusType, TaskModel } from '../../model/task.model';
 import { AbstractListComponent } from '../../../shared/abstract/abstract-list.component';
 import { ModalService } from '../../../shared/services/modal.service';
+import { StatusDetail } from '../../model/status-detail.model';
 
 @Component({
   selector: 'app-board',
@@ -12,11 +13,11 @@ import { ModalService } from '../../../shared/services/modal.service';
 })
 export class BoardComponent extends AbstractListComponent<TaskModel>{
   protected override service: any;
- 
-  steppers = [
-    { label: 'A Fazer', color: 'var(--blue-lighter)', icon: 'playlist_add' },
-    { label: 'Em Andamento', color: 'var(--blue-dark)', icon: 'autorenew' },
-    { label: 'Concluído', color: '#cfcacaff', icon: 'check_circle' },
+  selectedTask: TaskModel | null = null;
+  steppers: StatusDetail[] = [
+    { label: 'A Fazer', color: 'var(--blue-lighter)', icon: 'playlist_add', value: 'Pending' },
+    { label: 'Em Andamento', color: 'var(--blue-dark)', icon: 'autorenew', value: 'In Progress' },
+    { label: 'Concluído', color: '#cfcacaff', icon: 'check_circle', value: 'Completed' },
   ];
   boardList: Map<string, TaskModel[]> = new Map<string, TaskModel[]>();
   constructor(
@@ -59,7 +60,22 @@ export class BoardComponent extends AbstractListComponent<TaskModel>{
   }
 
   updateStatus(task: TaskModel, status: StatusType) {
-    this.modalService.confirm('Atualizar Status', `Deseja mover a tarefa "${task.title}" para "${status}"?`);
+    this.selectedTask = task;
+    this.modalService
+      .confirm(
+        this.messages.title.confirmation,
+        this.messages.notifications.confirm_update_status + ` ${task.title}?`,
+        this.actionsTemplate
+      ).subscribe((result: any) => {
+        console.log(result);
+      });
+  }
+
+  onStatusChange(newStatus: StatusType, dialogRef: any) {
+    if (this.selectedTask && newStatus !== this.selectedTask.status) {
+      this.update(this.selectedTask._id, { status: newStatus });
+    }
+    dialogRef.close();
   }
 
 }

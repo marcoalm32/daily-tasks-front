@@ -23,6 +23,7 @@ import { DropdownComponent } from '../shared/components/dropdown/dropdown.compon
 import { MatRadioModule } from '@angular/material/radio';
 import { PipeModule } from '../shared/pipes/pipe.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ChangeStatusComponent } from '../shared/components/change-status/change-status.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     PipeModule,
     MatTooltipModule,
     DragDropModule,
+    ChangeStatusComponent,
   ]
 })
 export class TaskModule { }

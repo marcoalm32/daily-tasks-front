@@ -42,6 +42,14 @@
             </div>
         </div>
     </div>
+    <ng-template #confirmActions let-dialogRef="dialogRef">
+        <app-change-status 
+            [status]="steppers"
+            [selectedStatus]="selectedTask?.status"
+            (selectedStatusChange)="onStatusChange($event, dialogRef)"
+            (close)="dialogRef.close($event)">
+        </app-change-status>
+    </ng-template>
 
     
 </section>

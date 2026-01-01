@@ -1,0 +1,27 @@
+<div class="change-status-container">
+    <div>
+        <h2>{{messages.title.change_status}}</h2>
+    </div>
+    <mat-radio-group 
+        class="row"
+        [(ngModel)]="selectedStatus"
+        (change)="changeStatus($event)">
+        <mat-radio-button
+            class="status col-4" 
+            *ngFor="let status of status"
+            [value]="status.value">
+            <span>{{status?.label}}</span>
+        </mat-radio-button>
+    </mat-radio-group>
+    <div 
+        class="bar"
+        [style.backgroundColor]="colorBar"
+        [style.width.%]="widthBar">
+    </div>
+    <div class="d-flex justify-end mt-20">
+        <app-button
+            [label]="messages.button.confirm"
+            (onClick)="selectedStatusChange.emit(selectedStatus)">
+        </app-button>
+    </div>
+</div>
