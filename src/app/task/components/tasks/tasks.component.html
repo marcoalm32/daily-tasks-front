@@ -13,8 +13,26 @@
                 [task]="task" 
                 [format]="'list'"
                 (edit)="onEdit($event)"
-                (delete)="onDelete($event)"
+                (delete)="openModal(task)"
             ></app-task-card>
         </div>
     </div>
+    <ng-template #confirmActions let-dialogRef="dialogRef">
+        <div class="d-flex justify-space-around">
+            <app-button
+                [color]="'accent'"
+                [label]="messages.button.cancel"
+                [size]="'medium'"
+                (onClick)="dialogRef.close(false)">
+        </app-button>
+
+        <app-button
+            [color]="'success'"
+            [size]="'medium'"
+            class="ml-15"
+            [label]="messages.button.confirm"
+            (onClick)="dialogRef.close(true)">
+        </app-button>
+        </div>
+    </ng-template>
 </section>

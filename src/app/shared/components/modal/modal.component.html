@@ -1,20 +1,20 @@
 <div class="modal">
-    <h2 mat-dialog-title class="font-title">{{data.title}}</h2>
+    <div class="d-flex justify-space-between align-center ml-15">
+        <h2 class="font-title">{{data.title}}</h2>
+        <mat-icon 
+            class="cursor-pointer mb-15"
+            (click)="onCancel()">
+            cancel
+        </mat-icon>
+    </div>
     <mat-dialog-content>
         <p class="font-subtitle">{{data.message}}</p>
     </mat-dialog-content>
-    <mat-dialog-actions align="end">
-        <app-button
-            [label]="messages.button.cancel"
-            (onClick)="onCancel()"
-            [color]="'accent'"
-            >
-        </app-button>
-        <app-button
-            class="ml-15"
-            [label]="messages.button.confirm"
-            (onClick)="onConfirm()"
-            >
-        </app-button>
+    <mat-dialog-actions>
+        <ng-container
+            *ngIf="data.contentTemplate"
+            [ngTemplateOutlet]="data.contentTemplate"
+            [ngTemplateOutletContext]="{ dialogRef: dialogRef }"
+        ></ng-container>
     </mat-dialog-actions>
 </div>

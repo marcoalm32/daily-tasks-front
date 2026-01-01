@@ -1,3 +1,16 @@
 .modal {
     padding: 1rem;
 }
+
+mat-icon {
+    color: var(--blue-cancel);
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+mat-dialog-actions {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+}
