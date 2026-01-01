@@ -36,9 +36,9 @@ export abstract class AbstractService<T> implements ServiceModel<T> {
     return this.http.patch<ResponseApi<T>>(url, item);
   }
 
-  delete(id: string): Observable<ResponseApi<null>> {
+  delete(id: string): Observable<ResponseApi<boolean>> {
     const url = `${this.endpoint}/${id}`;
-    return this.http.delete<ResponseApi<null>>(url);
+    return this.http.delete<ResponseApi<boolean>>(url);
   }
 
   

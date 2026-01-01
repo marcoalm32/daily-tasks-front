@@ -14,6 +14,7 @@ import { ServiceModel } from '../models/service.model';
 import { QueryParamsDto } from '../models/dto/query-params.dto';
 import { ModalService } from '../services/modal.service';
 import { MESSAGES } from '../messages/messages';
+import { ToasterService } from '../services/toaster.service';
 
 const SERVICE_MODEL = new InjectionToken<ServiceModel<any>>('SERVICE_MODEL');
 @Directive()
@@ -32,6 +33,7 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   constructor(
     protected readonly router: Router,
     protected readonly modalService: ModalService,
+    protected readonly toasterService: ToasterService,
     @Inject(SERVICE_MODEL) protected readonly service: ServiceModel<T>,
   ) {}
 
@@ -57,7 +59,7 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
             this.getItemsValue();
         },
         error: (error: any) => {
-            console.log(error)
+          this.toasterService.show(error?.error?.message, 'error');
         }
     })
     this.subscriptions.push(subscription);
@@ -75,11 +77,12 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
 
   protected update(id: string, data: Partial<T>) {
     const subscription = this.service.update(id, data).subscribe({
-      next: (_: ResponseApi<T>) => {
+      next: (response: ResponseApi<T>) => {
+        this.toasterService.show(response.message, 'success');
         this.getItems();
       },
       error: (error: any) => {
-        console.log(error)
+        this.toasterService.show(error?.error?.message, 'error');
       }
     });
     this.subscriptions.push(subscription);
@@ -100,11 +103,12 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
 
   protected onDelete(item: T) {
     const subscription = this.service.delete((item as any)._id).subscribe({
-      next: (_: ResponseApi<null>) => {
+      next: (response: ResponseApi<boolean>) => {
+        this.toasterService.show(response.message, 'success');
         this.getItems();
       },
       error: (error: any) => {
-        console.log(error)
+        this.toasterService.show(error?.error?.message, 'error');
       }
     });
     this.subscriptions.push(subscription);

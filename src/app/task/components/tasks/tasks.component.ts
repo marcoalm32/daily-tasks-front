@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { AbstractListComponent } from '../../../shared/abstract/abstract-list.component';
 import { TaskModel } from '../../model/task.model';
 import { Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { ServiceModel } from '../../../shared/models/service.model';
 import { ModalService } from '../../../shared/services/modal.service';
+import { ToasterService } from '../../../shared/services/toaster.service';
 
 @Component({
   selector: 'app-tasks',
@@ -22,11 +23,10 @@ export class TasksComponent extends AbstractListComponent<TaskModel> {
   constructor(
     protected override readonly router: Router,
     protected override readonly modalService: ModalService,
+    protected override readonly toasterService: ToasterService,
     protected readonly taskService: TaskService
   ) { 
-    super(router, modalService, taskService);
+    super(router, modalService, toasterService, taskService);
     this.service = taskService;
   }
-
-  
 }

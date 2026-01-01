@@ -38,7 +38,7 @@ export class TaskService extends AbstractService<TaskModel> {
   override update(id: string, item: TaskModel): Observable<ResponseApi<TaskModel>> {
     return this.http.patch<ResponseApi<TaskModel>>(`${this.endpoint}/${id}`, item);
   }
-  override delete(id: string): Observable<ResponseApi<null>> {
-    return this.http.delete<ResponseApi<null>>(`${this.endpoint}/${id}`);
+  override delete(id: string): Observable<ResponseApi<boolean>> {
+    return this.http.delete<ResponseApi<boolean>>(`${this.endpoint}/${id}`);
   }
 }
