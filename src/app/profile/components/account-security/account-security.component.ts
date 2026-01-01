@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AbstractFormComponent } from '../../../shared/abstract/abstract-form.component';
 import { PersonalInfoModel } from '../../models/personal-info.model';
-import { Observable } from 'rxjs';
+import { delay, Observable, tap } from 'rxjs';
 import { ResponseApi } from '../../../shared/models/response-api';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { ToasterService } from '../../../shared/services/toaster.service';
 import { ProfileService } from '../../services/profile.service';
 import { passwordValidator } from '../../../shared/validators/password.validator';
 import { AccountSecurityDTO } from '../../models/dto/account-security.dto';
+import { AuthService } from '../../../auth/service/auth.service';
 
 @Component({
   selector: 'app-account-security',
@@ -25,6 +26,7 @@ export class AccountSecurityComponent extends AbstractFormComponent<PersonalInfo
     protected override readonly router: Router,
     protected override readonly toasterService: ToasterService,
     protected readonly profileService: ProfileService,
+    private readonly authService: AuthService,
   ) {
     super(fb, route, router, toasterService, profileService);
   }
@@ -37,7 +39,7 @@ export class AccountSecurityComponent extends AbstractFormComponent<PersonalInfo
     });
   }
 
-  protected override getById(id: string): Observable<ResponseApi<PersonalInfoModel>> {
+  protected override getById(_: string): Observable<ResponseApi<PersonalInfoModel>> {
     throw new Error('Method not implemented.');
   }
 
@@ -49,11 +51,16 @@ export class AccountSecurityComponent extends AbstractFormComponent<PersonalInfo
     }
     const accountSecurityData = new AccountSecurityDTO(this.form.value);
     const subscription = this.profileService.updatePassword(this.userId as string, accountSecurityData)
+    .pipe(
+      tap((response) => {
+        return this.toasterService.show(response.message, 'success');
+      }),
+      delay(2000)
+    )
     .subscribe({
-      next: (response: ResponseApi<boolean>) => {
-        this.toasterService.show(response.message, 'success');
-        this.form.reset();
-      }, 
+      next: (_: ResponseApi<boolean>) => {
+        this.authService.logout();
+      },
       error: (error) => {
         this.toasterService.show(error?.error?.message, 'error');
       }

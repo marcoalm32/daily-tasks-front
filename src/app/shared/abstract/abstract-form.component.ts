@@ -72,10 +72,7 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
 
     protected create() {
         if (!this.service) return;
-        if (this.form.invalid) {
-            this.form.markAllAsTouched();
-            return;
-        }
+        if (!this.checkFormisValid()) return;
         const payload = this.form.value;
         const subscription = this.service.create(payload).subscribe({
             next: (response) => {
@@ -89,12 +86,18 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
         this.subscriptions.push(subscription);
     }
 
+    protected checkFormisValid(): boolean {
+        if (!this.form.invalid) {
+            this.form.markAllAsTouched();
+            this.form.markAsDirty();
+            return false;
+        }
+        return true;
+    }
+
     protected update() {
         if (!this.service || !this.id) return;
-        if (this.form.invalid) {
-            this.form.markAllAsTouched();
-            return;
-        }
+        if (!this.checkFormisValid()) return;
         const payload = this.form.value;
         const subscription = this.service.update(this.id, payload).subscribe({
             next: (response) => {
