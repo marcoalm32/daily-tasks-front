@@ -59,6 +59,9 @@ export const MESSAGES = {
     notifications: {
         loading: 'A paciência é uma virtude',
         noImageSelected: 'Nenhuma imagem selecionada.',
+        confirm_delete: 'Tem certeza que deseja excluir a tarefa: ',
+        confirm_update_status: 'Tem certeza que deseja atualizar o status da tarefa: ',
+        warn_update_profile: 'Ao atualizar suas informações pessoais, você será desconectado para garantir a segurança da sua conta.',
     },
     title: {
         personal_info: 'Informações Pessoais',
@@ -67,5 +70,8 @@ export const MESSAGES = {
         tasks: 'Minhas Tarefas',
         activity_history: 'Histórico de Atividades',
         uploadImageTitle: 'Carregar Imagem',
+        delete: 'Excluir',
+        confirmation: 'Confirmação',
+        change_status: 'Alterar Status da Tarefa'
     }
 }

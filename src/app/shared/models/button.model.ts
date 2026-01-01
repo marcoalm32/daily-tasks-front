@@ -1,10 +1,11 @@
+import { ColorType } from "./color-type.model";
+
 export type ButtonVariant = 'raised' | 'flat' | 'stroked' | 'icon' | 'none';
-export type ButtonColor = 'success' | 'accent' | 'warning' | 'danger' | 'link';
 
 export interface ButtonModel {
     label: string;
     variant: ButtonVariant;
-    color: ButtonColor;
+    color: ColorType;
     disabled?: boolean;
     icon?: string;
 }

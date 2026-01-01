@@ -6,6 +6,6 @@ export interface ServiceModel<T> {
     get(params: QueryParamsDto): Observable<ResponseApi<T[]>>;
     getById(id: string): Observable<ResponseApi<T>>;
     create(item: T): Observable<ResponseApi<T>>;
-    update(id: string, item: T): Observable<ResponseApi<T>>;
-    delete(id: string): Observable<ResponseApi<null>>;
+    update(id: string, item: Partial<T>): Observable<ResponseApi<T>>;
+    delete(id: string): Observable<ResponseApi<boolean>>;
 }

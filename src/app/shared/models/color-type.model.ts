@@ -1,0 +1,1 @@
+export type ColorType = 'success' | 'accent' | 'warning' | 'danger' | 'link';
