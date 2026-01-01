@@ -16,6 +16,12 @@
             Última atualização: {{ user?.updatedAt | date: 'dd/MM/yyyy - HH:mm' }}
         </h3>
     </div>
+    <div class="col-12">
+        <app-alert
+            [message]="messages.notifications.warn_update_profile"
+            [type]="'warning'"
+        ></app-alert>
+    </div>
     <div class="col-8">
         <mat-tab-group>
             <mat-tab [label]="messages.title.personal_info">

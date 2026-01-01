@@ -11,6 +11,7 @@ import { FieldComponent } from '../shared/components/field/field.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from '../shared/components/button/button.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { AlertComponent } from '../shared/components/alert/alert.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ReactiveFormsModule,
     ButtonComponent,
     MatTabsModule,
+    AlertComponent,
   ]
 })
 export class ProfileModule { }

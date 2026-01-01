@@ -1,0 +1,29 @@
+.alert {
+    display: flex;
+    align-items: center;
+    background-color: var(--status-warning);
+    padding: .5rem .8rem .2rem .8rem;
+    border-radius: var(--radius-md);
+    margin: 20px 0;
+    box-sizing: border-box;
+
+    .alert-content {
+        color: var(--color-text);
+        line-height: 25px;
+
+        p {
+            font-weight: 600 !important;
+        }
+    }
+
+    .alert-icon {
+        margin-left: auto;
+        color: var(--background-light);
+
+        mat-icon {
+            font-size: 30px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
