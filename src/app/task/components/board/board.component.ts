@@ -5,6 +5,7 @@ import { StatusType, TaskModel } from '../../model/task.model';
 import { AbstractListComponent } from '../../../shared/abstract/abstract-list.component';
 import { ModalService } from '../../../shared/services/modal.service';
 import { StatusDetail } from '../../model/status-detail.model';
+import { ToasterService } from '../../../shared/services/toaster.service';
 
 @Component({
   selector: 'app-board',
@@ -23,9 +24,10 @@ export class BoardComponent extends AbstractListComponent<TaskModel>{
   constructor(
     protected override readonly router: Router,
     protected override readonly modalService: ModalService,
+    protected override readonly toasterService: ToasterService,
     protected readonly taskService: TaskService,
   ) {
-    super(router, modalService, taskService);
+    super(router, modalService, toasterService, taskService);
     this.service = this.taskService;
   }
 

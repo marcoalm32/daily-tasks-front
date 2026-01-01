@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { ButtonColor, ButtonVariant } from '../../models/button.model';
+import { ButtonVariant } from '../../models/button.model';
+import { ColorType } from '../../models/color-type.model';
 
 @Component({
   selector: 'app-button',
@@ -19,7 +20,7 @@ export class ButtonComponent {
 
   @Input() label: string = '';
   @Input() icon: string = '';
-  @Input() color: ButtonColor = 'success';
+  @Input() color: ColorType = 'success';
   @Input() disabled: boolean = false;
   @Input() size: 'small' | 'medium' | 'large' | 'extra-large'  = 'medium';
   @Input() variant: ButtonVariant = 'raised';
