@@ -87,7 +87,7 @@ export abstract class AbstractFormComponent<T> implements OnInit, OnDestroy {
     }
 
     protected checkFormisValid(): boolean {
-        if (!this.form.invalid) {
+        if (this.form.invalid) {
             this.form.markAllAsTouched();
             this.form.markAsDirty();
             return false;

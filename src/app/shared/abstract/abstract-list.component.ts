@@ -114,4 +114,9 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
     this.subscriptions.push(subscription);
   }
 
+  protected onPageChange(page: number): void {
+    this.pagination.page = page;
+    this.getItems()
+  }
+
 }
