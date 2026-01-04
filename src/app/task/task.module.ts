@@ -24,6 +24,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { PipeModule } from '../shared/pipes/pipe.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ChangeStatusComponent } from '../shared/components/change-status/change-status.component';
+import { AccordionComponent } from '../shared/components/accordion/accordion.component';
+import { PaginationComponent } from '../shared/components/pagination/pagination.component';
 
 
 @NgModule({
@@ -56,6 +58,8 @@ import { ChangeStatusComponent } from '../shared/components/change-status/change
     MatTooltipModule,
     DragDropModule,
     ChangeStatusComponent,
+    AccordionComponent,
+    PaginationComponent,
   ]
 })
 export class TaskModule { }

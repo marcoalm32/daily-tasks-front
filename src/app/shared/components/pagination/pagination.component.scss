@@ -1,0 +1,35 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    width: 550px;
+    height: 50px;
+    padding: 12px;
+    background-color: var(--background-white);
+    border-radius: var(--radius-lg);
+
+    p {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-shadown);
+        margin-top: 5px;
+    }
+
+    .current {
+        background-color: var(--blue-lighter);
+        border-radius: 50%;
+        width: 36px;
+        padding: 12px;
+        text-align: center;
+        margin: 0 8px;
+    }
+
+    .total {
+        background-color: var(--blue-navy);
+
+        p {
+            color: var(--background-light);
+        }
+    }
+}

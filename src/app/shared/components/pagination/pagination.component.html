@@ -1,0 +1,33 @@
+<div class="pagination">
+    <p class="font-subtitle">
+        Exibindo {{ pagination?.page}} - {{ pagination?.totalPages }} de {{ pagination?.totalItems }} resultados
+    </p>
+    <div class="d-flex justify-start">
+        <app-button
+            *ngIf="pagination?.page > 1"
+            style="margin-left: 1em;"
+            [icon]="'chevron_left'"
+            [variant]="'icon'"
+            [iconSize]="'icon-lg'"
+            [iconColor]="'icon-primary'"
+            (onClick)="pageChange.emit(pagination?.page - 1)"
+        ></app-button>
+        <ng-container *ngFor="let page of pages;">
+            <app-button
+                style="margin-left: 1em;"
+                [label]="page"
+                [color]="page === pagination?.page ? 'success' : 'accent'"
+                (onClick)="pageChange.emit(page)"
+            ></app-button>
+        </ng-container>
+        <app-button
+            *ngIf="pagination?.page < pagination?.totalPages"
+            style="margin-left: 1em;"
+            [icon]="'chevron_forward'"
+            [variant]="'icon'"
+            [iconSize]="'icon-lg'"
+            [iconColor]="'icon-primary'"
+            (onClick)="pageChange.emit(pagination?.page + 1)"
+        ></app-button>
+    </div>
+</div>
