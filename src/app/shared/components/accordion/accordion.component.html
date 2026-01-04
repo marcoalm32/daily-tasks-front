@@ -1,0 +1,21 @@
+<div>
+  <ng-container *ngFor="let item of visibleItems">
+    <div @slide class="row">
+      <ng-container
+        *ngTemplateOutlet="template; context: { $implicit: item }"
+      ></ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<div class="row" *ngIf="showToggle">
+  <div class="col-10 d-flex justify-end mt-15">
+    <app-button
+        [color]="'primary'"
+        [variant]="'icon'"
+        [iconSize]="'icon-xl'"
+        [icon]="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+        (onClick)="toggle()"
+    ></app-button>
+  </div>
+</div>
