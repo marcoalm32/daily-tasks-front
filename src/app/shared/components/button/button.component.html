@@ -2,21 +2,12 @@
     <button 
         *ngSwitchCase="'raised'" 
         mat-raised-button class="btn" 
-        [ngClass]="[size, color]" 
-        [style.color]="'#fff'" 
-        [disabled]="disabled" 
+        [ngClass]="[size, color]"
+        [style.color]="'#fff'"
+        [disabled]="disabled"
         (click)="onClick.emit()">
         <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
         {{ label }}
-    </button>
-
-    <button 
-        *ngSwitchCase="'icon'" 
-        mat-icon-button class="btn" 
-        [ngClass]="[size, color]" 
-        [disabled]="disabled" 
-        (click)="onClick.emit()">
-        <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
     </button>
 
     <button

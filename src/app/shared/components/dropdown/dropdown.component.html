@@ -9,6 +9,14 @@
         [value]="value"
         [placeholder]="placeholder"
         (selectionChange)="onSelect($event.value)">
+        <mat-select-trigger *ngIf="multiple">
+            {{ getFirstSelectedLabel() }}
+            <ng-container *ngIf="value?.length > 1">
+                <span>
+                    (+{{ value?.length - 1 }}{{ value?.length === 2 ? '' : 's' }})
+                </span>
+            </ng-container>
+        </mat-select-trigger>
 
         <ng-container *ngIf="multiple">
             <mat-select-trigger *ngIf="value">

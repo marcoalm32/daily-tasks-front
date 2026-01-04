@@ -44,7 +44,11 @@ export class DropdownComponent implements ControlValueAccessor {
   protected onTouched = () => {};
 
   writeValue(obj: any): void {
-    this.value = obj;
+    if (this.multiple && Array.isArray(obj) && obj.length && typeof obj[0] === 'object') {
+      this.value = obj.map((v: any) => v[this.selectedValue]);
+    } else {
+      this.value = obj;
+    }
   }
 
   registerOnChange(fn: any): void {
@@ -59,14 +63,21 @@ export class DropdownComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  constructor() {
-    this.placeholder = this.messages.inputs.placeholder.select_option;
+  getFirstSelectedLabel(): string {
+    if (!this.value || !this.value.length) return '';
+    const opt = this.options.find((option: any) => option[this.idProperty] === this.value[0]);
+    const result = opt ? opt[this.displayProperty] : '';
+    return result;
   }
 
   onSelect(value: any): void {
-    this.value = value[this.selectedValue];
+    this.value = value;
     this.onChange(value);
     this.onTouched();
+  }
+
+  constructor() {
+    this.placeholder = this.messages.inputs.placeholder.select_option;
   }
 
   get selectedLabel(): string {
