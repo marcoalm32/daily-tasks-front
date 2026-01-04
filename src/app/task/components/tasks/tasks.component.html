@@ -7,16 +7,22 @@
             <span class="font-title">{{ col?.label }} </span>
         </div>
     </div>
-    <div class="row">
-        <div *ngFor="let task of items" class="col-10 mt-15">
-            <app-task-card 
-                [task]="task" 
-                [format]="'list'"
-                (edit)="onEdit($event)"
-                (delete)="openModal(task)"
-            ></app-task-card>
-        </div>
-    </div>
+    <app-accordion [value]="items">
+        <ng-template #accordionItem let-task>
+            <div class="col-10 mt-15">
+                <app-task-card 
+                    [task]="task"
+                    [format]="'list'"
+                    (edit)="onEdit($event)"
+                    (delete)="openModal(task)"
+                ></app-task-card>
+            </div>
+        </ng-template>
+    </app-accordion>
+    <app-pagination
+        [pagination]="pagination"
+        (pageChange)="onPageChange($event)"
+    ></app-pagination>
     <ng-template #confirmActions let-dialogRef="dialogRef">
         <div class="d-flex justify-space-around">
             <app-button
