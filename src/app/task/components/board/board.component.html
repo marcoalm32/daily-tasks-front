@@ -22,7 +22,7 @@
         <div class="col-4">
             <div class="stack">
                 <div 
-                    class="task" 
+                    class="task"
                     *ngFor="let task of (boardList.get('Em Andamento') || [])">
                     <app-task-card 
                         [task]="task"
@@ -41,6 +41,12 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row mt-20">
+        <app-pagination
+            [pagination]="pagination"
+            (pageChange)="onPageChange($event)"
+        ></app-pagination>
     </div>
     <ng-template #confirmActions let-dialogRef="dialogRef">
         <app-change-status 
