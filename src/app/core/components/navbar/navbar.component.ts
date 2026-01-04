@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from '../../../shared/components/menu/menu.component';
 import { AuthService } from '../../../auth/service/auth.service';
 import { UserModel } from '../../../auth/models/user.model';
+import { MESSAGES } from '../../../shared/messages/messages';
 
 @Component({
   selector: 'app-navbar',
@@ -22,6 +23,7 @@ import { UserModel } from '../../../auth/models/user.model';
 })
 export class NavbarComponent {
 
+  messages = MESSAGES;
   constructor(
     private readonly authService: AuthService,
   ) {}
